@@ -17,6 +17,10 @@
  *
  *  @param urlString 
  */
-- (void)prepareToPlayMusicWithURl:(NSString *)urlString;
+- (void)prepareToPlayMusicWithURl:(NSString *)urlString mname:(NSString *)mname Singer:(NSString*)singer Album:(NSString*)album;
+
+- (void)gd_play;
+
+- (void)gd_pause;
 
 @end

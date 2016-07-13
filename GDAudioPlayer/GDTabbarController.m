@@ -12,6 +12,7 @@
 @interface GDTabbarController ()
 {
     BOOL playButton_Play;                   //播放按钮状态
+    
 }
 @property (nonatomic, strong) UIView *bgView;
 
@@ -19,7 +20,9 @@
 
 @property (nonatomic, strong) UIButton *listMenu_control;
 
+@property (nonatomic, strong) UILabel *music_message1;
 
+@property (nonatomic, strong) UILabel *music_message2;
 @end
 
 @implementation GDTabbarController
@@ -45,14 +48,36 @@
     
     [self drawContext];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playMusic:) name:Notification_PLAY_Start object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pauseMusic:) name:Notification_PLAY_Pause object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMusicMessage:) name:Notification_PLAY_NowMusicMessage object:nil];
 }
+
+#pragma mark - 播放过程通知
+- (void)updateMusicMessage:(NSNotification*)noti{
+    NSDictionary *dic = noti.userInfo;
+    _music_message1.text = dic[@"name"];
+    _music_message2.text = dic[@"singer"];
+}
+- (void)playMusic:(NSNotification *)noti{
+    [self.music_IconSquare.layer addAnimation:[self iconRotate] forKey:nil];
+    [self.play_control setImage:XUIImage(@"tabbar_audio_pause_normal") forState:UIControlStateNormal];
+    [self.play_control setImage:XUIImage(@"tabbar_audio_pause_highlight") forState:UIControlStateNormal];
+    playButton_Play = YES;
+
+}
+- (void)pauseMusic:(NSNotification *)noti{
+    [self.music_IconSquare.layer removeAllAnimations];
+    [self.play_control setImage:XUIImage(@"tabbar_audio_start_normal") forState:UIControlStateNormal];
+    [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateNormal];
+    playButton_Play = NO;
+
+}
+#pragma mark - UI
 - (void)drawContext{
     
     self.music_IconSquare.image = XUIImage(@"musicIcon");
     
-    [_bgView addSubview:self.listMenu_control];
-    [_bgView addSubview:self.next_control];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(SCREENWIDTH-(40*3+40), 10, 40, 40);
@@ -62,6 +87,11 @@
     _play_control = button;
     [self.play_control setImage:XUIImage(@"tabbar_audio_start_normal") forState:UIControlStateNormal];
     [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateNormal];
+
+    [_bgView addSubview:self.listMenu_control];
+    [_bgView addSubview:self.next_control];
+    [_bgView addSubview:self.music_message1];
+    [_bgView addSubview:self.music_message2];
     
     //加tap
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH-180, 60)];
@@ -127,13 +157,14 @@
         [self.play_control setImage:XUIImage(@"tabbar_audio_pause_normal") forState:UIControlStateNormal];
         [self.play_control setImage:XUIImage(@"tabbar_audio_pause_highlight") forState:UIControlStateNormal];
         playButton_Play = YES;
+        [[PlayManager defaultManager] gd_play];
     }else{
         [self.music_IconSquare.layer removeAllAnimations];
         [self.play_control setImage:XUIImage(@"tabbar_audio_start_normal") forState:UIControlStateNormal];
         [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateNormal];
         playButton_Play = NO;
+        [[PlayManager defaultManager] gd_pause];
     }
-    
 }
 #pragma mark - 头像旋转
 - (CABasicAnimation*)iconRotate{
@@ -155,6 +186,24 @@
         _music_IconSquare = imageView;
     }
     return _music_IconSquare;
+}
+- (UILabel *)music_message1{
+    if (!_music_message1) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, SCREENWIDTH-160-60, 30)];
+        label.textColor = [UIColor whiteColor];
+        label.font = [UIFont systemFontOfSize:15];
+        _music_message1 = label;
+    }
+    return _music_message1;
+}
+- (UILabel *)music_message2{
+    if (!_music_message2) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, 30, SCREENWIDTH-160-60, 20)];
+        label.textColor = [UIColor whiteColor];
+        label.font = [UIFont systemFontOfSize:13];
+        _music_message2 = label;
+    }
+    return _music_message2;
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

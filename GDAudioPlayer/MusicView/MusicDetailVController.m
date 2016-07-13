@@ -121,18 +121,18 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     DetailMusicListModel *model = _dataArray[indexPath.row];
 
-    [self getlistenMusicURL:[NSString stringWithFormat:@"%@",model.mid]];
+    [self getlistenMusicURL:[NSString stringWithFormat:@"%@",model.mid] Singer:model.msinger];
 }
 
-- (void)getlistenMusicURL:(NSString *)mid{
+- (void)getlistenMusicURL:(NSString *)mid Singer:(NSString*)singer{
 
     [[GD_DownloadCenter manager] postRequestWithURL:Get_mdlurl parameters:@{@"pver":@"1",@"Mid":mid} callBlock:^(id responseObject) {
 
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         GetMusicFileUrlModel *model = [[GetMusicFileUrlModel alloc] init];
         [model setValuesForKeysWithDictionary:dic];
-//        [_getmusicUrlArray addObject:model];
-        [[PlayManager defaultManager] prepareToPlayMusicWithURl:model.mfile];
+
+        [[PlayManager defaultManager] prepareToPlayMusicWithURl:model.mfile mname:model.mname Singer:singer Album:_needModel.maname];
     } callError:^(id Error) {
         GDLog(@"Error");
     }];

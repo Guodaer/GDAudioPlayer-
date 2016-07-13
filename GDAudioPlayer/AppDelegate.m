@@ -32,7 +32,29 @@
     
     return YES;
 }
-
+#pragma mark 接收远程事件
+-(void)remoteControlReceivedWithEvent:(UIEvent *)event{
+    //判断是否为远程事件
+    if (event.type == UIEventTypeRemoteControl) {
+        switch (event.subtype) {
+            case  UIEventSubtypeRemoteControlPlay:
+                [[PlayManager defaultManager] gd_play];
+                break;
+            case UIEventSubtypeRemoteControlPause:
+                [[PlayManager defaultManager] gd_pause];
+                
+                break;
+            case UIEventSubtypeRemoteControlNextTrack:
+                NSLog(@"下一首");
+                break;
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                NSLog(@"上一首 ");
+                break;
+            default:
+                break;
+        }
+    }
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

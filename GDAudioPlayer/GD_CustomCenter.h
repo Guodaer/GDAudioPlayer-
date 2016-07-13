@@ -112,6 +112,11 @@ typedef enum : NSUInteger {
 
 #define Notification_AudioPlayDetail_Present @"Notification_AudioPlayDetail_Present"
 
+#define Notification_PLAY_Start @"Notification_PLAY_Start"
+
+#define Notification_PLAY_Pause @"Notification_PLAY_Pause"
+
+#define Notification_PLAY_NowMusicMessage @"Notification_PLAY_NowMusicMessage"
 /**
  *  数据存储
  */
