@@ -1,0 +1,28 @@
+//
+//  GDPrefixHeader.pch
+//  GDAudioPlayer
+//
+//  Created by xiaoyu on 16/7/11.
+//  Copyright © 2016年 Damon. All rights reserved.
+//
+
+#ifndef GDPrefixHeader_pch
+#define GDPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import <AVFoundation/AVFoundation.h>
+
+#import <AVKit/AVKit.h>
+
+#import "GD_CustomCenter.h"
+
+#import "AppDelegate.h"
+
+#import "GD_DownloadCenter.h"
+
+#import "UIImageView+WebCache.h"
+
+#endif /* GDPrefixHeader_pch */

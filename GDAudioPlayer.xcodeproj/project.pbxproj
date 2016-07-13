@@ -1,0 +1,802 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1E8215D9A9510CED8F869E24 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793DF0D02585527B97B3639A /* libPods.a */; };
+		B80DB2CE1D33330D004CA6DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB2CD1D33330D004CA6DB /* main.m */; };
+		B80DB2D11D33330D004CA6DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB2D01D33330D004CA6DB /* AppDelegate.m */; };
+		B80DB2D91D33330D004CA6DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B80DB2D81D33330D004CA6DB /* Assets.xcassets */; };
+		B80DB2DC1D33330D004CA6DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B80DB2DA1D33330D004CA6DB /* LaunchScreen.storyboard */; };
+		B80DB2E71D33330D004CA6DB /* GDAudioPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB2E61D33330D004CA6DB /* GDAudioPlayerTests.m */; };
+		B80DB2F21D33330D004CA6DB /* GDAudioPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB2F11D33330D004CA6DB /* GDAudioPlayerUITests.m */; };
+		B80DB3011D33334F004CA6DB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB3001D33334F004CA6DB /* RootViewController.m */; };
+		B80DB3071D334125004CA6DB /* UIImage+Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB3061D334125004CA6DB /* UIImage+Circle.m */; };
+		B80DB30A1D33492D004CA6DB /* GDTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB3091D33492D004CA6DB /* GDTabbarController.m */; };
+		B80DB30E1D334A9A004CA6DB /* 那些花儿.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B80DB30C1D334A9A004CA6DB /* 那些花儿.mp3 */; };
+		B80DB30F1D334A9A004CA6DB /* pushu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B80DB30D1D334A9A004CA6DB /* pushu.jpg */; };
+		B80DB3111D334F8C004CA6DB /* 10405520.lrc in Resources */ = {isa = PBXBuildFile; fileRef = B80DB3101D334F8C004CA6DB /* 10405520.lrc */; };
+		B80DB3151D33607F004CA6DB /* GDLrcAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB3141D33607F004CA6DB /* GDLrcAnalysis.m */; };
+		B80DB3181D336289004CA6DB /* LrcModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB3171D336289004CA6DB /* LrcModel.m */; };
+		B80DB31E1D3375AE004CA6DB /* LrcManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB31D1D3375AE004CA6DB /* LrcManger.m */; };
+		B80DB3211D337CC6004CA6DB /* LrcTimeContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB3201D337CC6004CA6DB /* LrcTimeContentModel.m */; };
+		B80DB3241D339C97004CA6DB /* GDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB3231D339C97004CA6DB /* GDNavigationController.m */; };
+		B810C3CD1D35DE8400E10F07 /* MDCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B810C3CC1D35DE8400E10F07 /* MDCell.m */; };
+		B810C3D01D35DE9100E10F07 /* MusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B810C3CF1D35DE9100E10F07 /* MusicModel.m */; };
+		B810C3D51D35DF0D00E10F07 /* GDTensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B810C3D41D35DF0D00E10F07 /* GDTensionView.m */; };
+		B810C3DA1D35DF1700E10F07 /* HomePageCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B810C3D71D35DF1700E10F07 /* HomePageCollectionView.m */; };
+		B810C3DB1D35DF1700E10F07 /* MusicDetailVController.m in Sources */ = {isa = PBXBuildFile; fileRef = B810C3D91D35DF1700E10F07 /* MusicDetailVController.m */; };
+		B810C3DF1D35DF5200E10F07 /* GD_DownloadCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B810C3DE1D35DF5200E10F07 /* GD_DownloadCenter.m */; };
+		B8228BC11D348E2400AEFC08 /* GDPresentTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B8228BC01D348E2400AEFC08 /* GDPresentTransition.m */; };
+		B8228BC51D348E8300AEFC08 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8228BC41D348E8300AEFC08 /* MenuViewController.m */; };
+		B8228BC91D34AB0E00AEFC08 /* AudioPlayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B8228BC81D34AB0E00AEFC08 /* AudioPlayDetailVC.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B80DB2E31D33330D004CA6DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B80DB2C11D33330D004CA6DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B80DB2C81D33330D004CA6DB;
+			remoteInfo = GDAudioPlayer;
+		};
+		B80DB2EE1D33330D004CA6DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B80DB2C11D33330D004CA6DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B80DB2C81D33330D004CA6DB;
+			remoteInfo = GDAudioPlayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		793DF0D02585527B97B3639A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80DB2C91D33330D004CA6DB /* GDAudioPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GDAudioPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80DB2CD1D33330D004CA6DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B80DB2CF1D33330D004CA6DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B80DB2D01D33330D004CA6DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B80DB2D81D33330D004CA6DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B80DB2DB1D33330D004CA6DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B80DB2DD1D33330D004CA6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B80DB2E21D33330D004CA6DB /* GDAudioPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GDAudioPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80DB2E61D33330D004CA6DB /* GDAudioPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDAudioPlayerTests.m; sourceTree = "<group>"; };
+		B80DB2E81D33330D004CA6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B80DB2ED1D33330D004CA6DB /* GDAudioPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GDAudioPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B80DB2F11D33330D004CA6DB /* GDAudioPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDAudioPlayerUITests.m; sourceTree = "<group>"; };
+		B80DB2F31D33330D004CA6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B80DB2FF1D33334F004CA6DB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		B80DB3001D33334F004CA6DB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		B80DB3021D333686004CA6DB /* GDPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDPrefixHeader.pch; sourceTree = "<group>"; };
+		B80DB3031D3336D6004CA6DB /* GD_CustomCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GD_CustomCenter.h; sourceTree = "<group>"; };
+		B80DB3051D334125004CA6DB /* UIImage+Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Circle.h"; sourceTree = "<group>"; };
+		B80DB3061D334125004CA6DB /* UIImage+Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Circle.m"; sourceTree = "<group>"; };
+		B80DB3081D33492D004CA6DB /* GDTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTabbarController.h; sourceTree = "<group>"; };
+		B80DB3091D33492D004CA6DB /* GDTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDTabbarController.m; sourceTree = "<group>"; };
+		B80DB30C1D334A9A004CA6DB /* 那些花儿.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "那些花儿.mp3"; sourceTree = "<group>"; };
+		B80DB30D1D334A9A004CA6DB /* pushu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pushu.jpg; sourceTree = "<group>"; };
+		B80DB3101D334F8C004CA6DB /* 10405520.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 10405520.lrc; sourceTree = "<group>"; };
+		B80DB3131D33607F004CA6DB /* GDLrcAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDLrcAnalysis.h; sourceTree = "<group>"; };
+		B80DB3141D33607F004CA6DB /* GDLrcAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDLrcAnalysis.m; sourceTree = "<group>"; };
+		B80DB3161D336289004CA6DB /* LrcModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LrcModel.h; sourceTree = "<group>"; };
+		B80DB3171D336289004CA6DB /* LrcModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LrcModel.m; sourceTree = "<group>"; };
+		B80DB31C1D3375AE004CA6DB /* LrcManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LrcManger.h; sourceTree = "<group>"; };
+		B80DB31D1D3375AE004CA6DB /* LrcManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LrcManger.m; sourceTree = "<group>"; };
+		B80DB31F1D337CC6004CA6DB /* LrcTimeContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LrcTimeContentModel.h; sourceTree = "<group>"; };
+		B80DB3201D337CC6004CA6DB /* LrcTimeContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LrcTimeContentModel.m; sourceTree = "<group>"; };
+		B80DB3221D339C97004CA6DB /* GDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDNavigationController.h; sourceTree = "<group>"; };
+		B80DB3231D339C97004CA6DB /* GDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDNavigationController.m; sourceTree = "<group>"; };
+		B810C3CB1D35DE8400E10F07 /* MDCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCell.h; sourceTree = "<group>"; };
+		B810C3CC1D35DE8400E10F07 /* MDCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCell.m; sourceTree = "<group>"; };
+		B810C3CE1D35DE9100E10F07 /* MusicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicModel.h; sourceTree = "<group>"; };
+		B810C3CF1D35DE9100E10F07 /* MusicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicModel.m; sourceTree = "<group>"; };
+		B810C3D31D35DF0D00E10F07 /* GDTensionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTensionView.h; sourceTree = "<group>"; };
+		B810C3D41D35DF0D00E10F07 /* GDTensionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDTensionView.m; sourceTree = "<group>"; };
+		B810C3D61D35DF1700E10F07 /* HomePageCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageCollectionView.h; sourceTree = "<group>"; };
+		B810C3D71D35DF1700E10F07 /* HomePageCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageCollectionView.m; sourceTree = "<group>"; };
+		B810C3D81D35DF1700E10F07 /* MusicDetailVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicDetailVController.h; sourceTree = "<group>"; };
+		B810C3D91D35DF1700E10F07 /* MusicDetailVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicDetailVController.m; sourceTree = "<group>"; };
+		B810C3DD1D35DF5200E10F07 /* GD_DownloadCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GD_DownloadCenter.h; sourceTree = "<group>"; };
+		B810C3DE1D35DF5200E10F07 /* GD_DownloadCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GD_DownloadCenter.m; sourceTree = "<group>"; };
+		B8228BC01D348E2400AEFC08 /* GDPresentTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDPresentTransition.m; sourceTree = "<group>"; };
+		B8228BC21D348E3100AEFC08 /* GDPresentTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPresentTransition.h; sourceTree = "<group>"; };
+		B8228BC31D348E8300AEFC08 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		B8228BC41D348E8300AEFC08 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		B8228BC71D34AB0E00AEFC08 /* AudioPlayDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayDetailVC.h; sourceTree = "<group>"; };
+		B8228BC81D34AB0E00AEFC08 /* AudioPlayDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayDetailVC.m; sourceTree = "<group>"; };
+		C6C1D1BCFF9BE11DA6F05103 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CD94F803F987B1524FFD70B2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B80DB2C61D33330D004CA6DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E8215D9A9510CED8F869E24 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80DB2DF1D33330D004CA6DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80DB2EA1D33330D004CA6DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		088C7BF843FDEA7D73EEC525 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CD94F803F987B1524FFD70B2 /* Pods.debug.xcconfig */,
+				C6C1D1BCFF9BE11DA6F05103 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B80DB2C01D33330D004CA6DB = {
+			isa = PBXGroup;
+			children = (
+				B80DB2CB1D33330D004CA6DB /* GDAudioPlayer */,
+				B80DB2E51D33330D004CA6DB /* GDAudioPlayerTests */,
+				B80DB2F01D33330D004CA6DB /* GDAudioPlayerUITests */,
+				B80DB2CA1D33330D004CA6DB /* Products */,
+				088C7BF843FDEA7D73EEC525 /* Pods */,
+				C03F1D0A485DCE97C2DAB2CA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B80DB2CA1D33330D004CA6DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B80DB2C91D33330D004CA6DB /* GDAudioPlayer.app */,
+				B80DB2E21D33330D004CA6DB /* GDAudioPlayerTests.xctest */,
+				B80DB2ED1D33330D004CA6DB /* GDAudioPlayerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B80DB2CB1D33330D004CA6DB /* GDAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				B810C3C91D35DE6100E10F07 /* Model */,
+				B810C3C81D35DE5900E10F07 /* cell */,
+				B80DB2CF1D33330D004CA6DB /* AppDelegate.h */,
+				B80DB2D01D33330D004CA6DB /* AppDelegate.m */,
+				B80DB3081D33492D004CA6DB /* GDTabbarController.h */,
+				B80DB3091D33492D004CA6DB /* GDTabbarController.m */,
+				B80DB3221D339C97004CA6DB /* GDNavigationController.h */,
+				B80DB3231D339C97004CA6DB /* GDNavigationController.m */,
+				B80DB2FF1D33334F004CA6DB /* RootViewController.h */,
+				B80DB3001D33334F004CA6DB /* RootViewController.m */,
+				B8228BC61D34AAC000AEFC08 /* PlayDetailVC */,
+				B80DB3261D33A5FF004CA6DB /* MenuViewController */,
+				B810C3D11D35DEE400E10F07 /* MusicView */,
+				B80DB3121D33601C004CA6DB /* GDLrcAnalysis */,
+				B810C3CA1D35DE6C00E10F07 /* MyLib */,
+				B80DB2D81D33330D004CA6DB /* Assets.xcassets */,
+				B80DB2DA1D33330D004CA6DB /* LaunchScreen.storyboard */,
+				B80DB2DD1D33330D004CA6DB /* Info.plist */,
+				B80DB2CC1D33330D004CA6DB /* Supporting Files */,
+			);
+			path = GDAudioPlayer;
+			sourceTree = "<group>";
+		};
+		B80DB2CC1D33330D004CA6DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B80DB2CD1D33330D004CA6DB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B80DB2E51D33330D004CA6DB /* GDAudioPlayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				B80DB2E61D33330D004CA6DB /* GDAudioPlayerTests.m */,
+				B80DB2E81D33330D004CA6DB /* Info.plist */,
+			);
+			path = GDAudioPlayerTests;
+			sourceTree = "<group>";
+		};
+		B80DB2F01D33330D004CA6DB /* GDAudioPlayerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B80DB2F11D33330D004CA6DB /* GDAudioPlayerUITests.m */,
+				B80DB2F31D33330D004CA6DB /* Info.plist */,
+			);
+			path = GDAudioPlayerUITests;
+			sourceTree = "<group>";
+		};
+		B80DB3041D33411A004CA6DB /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B80DB3021D333686004CA6DB /* GDPrefixHeader.pch */,
+				B80DB3031D3336D6004CA6DB /* GD_CustomCenter.h */,
+				B80DB3051D334125004CA6DB /* UIImage+Circle.h */,
+				B80DB3061D334125004CA6DB /* UIImage+Circle.m */,
+			);
+			name = Category;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		B80DB30B1D334A82004CA6DB /* source */ = {
+			isa = PBXGroup;
+			children = (
+				B80DB3101D334F8C004CA6DB /* 10405520.lrc */,
+				B80DB30C1D334A9A004CA6DB /* 那些花儿.mp3 */,
+				B80DB30D1D334A9A004CA6DB /* pushu.jpg */,
+			);
+			name = source;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		B80DB3121D33601C004CA6DB /* GDLrcAnalysis */ = {
+			isa = PBXGroup;
+			children = (
+				B80DB3131D33607F004CA6DB /* GDLrcAnalysis.h */,
+				B80DB3141D33607F004CA6DB /* GDLrcAnalysis.m */,
+				B80DB31C1D3375AE004CA6DB /* LrcManger.h */,
+				B80DB31D1D3375AE004CA6DB /* LrcManger.m */,
+				B80DB3161D336289004CA6DB /* LrcModel.h */,
+				B80DB3171D336289004CA6DB /* LrcModel.m */,
+				B80DB31F1D337CC6004CA6DB /* LrcTimeContentModel.h */,
+				B80DB3201D337CC6004CA6DB /* LrcTimeContentModel.m */,
+			);
+			name = GDLrcAnalysis;
+			sourceTree = "<group>";
+		};
+		B80DB3261D33A5FF004CA6DB /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B8228BC31D348E8300AEFC08 /* MenuViewController.h */,
+				B8228BC41D348E8300AEFC08 /* MenuViewController.m */,
+			);
+			name = MenuViewController;
+			sourceTree = "<group>";
+		};
+		B810C3C81D35DE5900E10F07 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				B810C3CB1D35DE8400E10F07 /* MDCell.h */,
+				B810C3CC1D35DE8400E10F07 /* MDCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		B810C3C91D35DE6100E10F07 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B810C3CE1D35DE9100E10F07 /* MusicModel.h */,
+				B810C3CF1D35DE9100E10F07 /* MusicModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B810C3CA1D35DE6C00E10F07 /* MyLib */ = {
+			isa = PBXGroup;
+			children = (
+				B810C3DC1D35DF5200E10F07 /* Download */,
+				B80DB30B1D334A82004CA6DB /* source */,
+				B80DB3041D33411A004CA6DB /* Category */,
+				B8228BBF1D348E0600AEFC08 /* 转场动画lib */,
+			);
+			path = MyLib;
+			sourceTree = "<group>";
+		};
+		B810C3D11D35DEE400E10F07 /* MusicView */ = {
+			isa = PBXGroup;
+			children = (
+				B810C3D61D35DF1700E10F07 /* HomePageCollectionView.h */,
+				B810C3D71D35DF1700E10F07 /* HomePageCollectionView.m */,
+				B810C3D81D35DF1700E10F07 /* MusicDetailVController.h */,
+				B810C3D91D35DF1700E10F07 /* MusicDetailVController.m */,
+				B810C3D21D35DF0500E10F07 /* 拉伸 */,
+			);
+			path = MusicView;
+			sourceTree = "<group>";
+		};
+		B810C3D21D35DF0500E10F07 /* 拉伸 */ = {
+			isa = PBXGroup;
+			children = (
+				B810C3D31D35DF0D00E10F07 /* GDTensionView.h */,
+				B810C3D41D35DF0D00E10F07 /* GDTensionView.m */,
+			);
+			name = "拉伸";
+			sourceTree = "<group>";
+		};
+		B810C3DC1D35DF5200E10F07 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				B810C3DD1D35DF5200E10F07 /* GD_DownloadCenter.h */,
+				B810C3DE1D35DF5200E10F07 /* GD_DownloadCenter.m */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		B8228BBF1D348E0600AEFC08 /* 转场动画lib */ = {
+			isa = PBXGroup;
+			children = (
+				B8228BC21D348E3100AEFC08 /* GDPresentTransition.h */,
+				B8228BC01D348E2400AEFC08 /* GDPresentTransition.m */,
+			);
+			name = "转场动画lib";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		B8228BC61D34AAC000AEFC08 /* PlayDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				B8228BC71D34AB0E00AEFC08 /* AudioPlayDetailVC.h */,
+				B8228BC81D34AB0E00AEFC08 /* AudioPlayDetailVC.m */,
+			);
+			path = PlayDetailVC;
+			sourceTree = "<group>";
+		};
+		C03F1D0A485DCE97C2DAB2CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				793DF0D02585527B97B3639A /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B80DB2C81D33330D004CA6DB /* GDAudioPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B80DB2F61D33330D004CA6DB /* Build configuration list for PBXNativeTarget "GDAudioPlayer" */;
+			buildPhases = (
+				B5644294EF0E21EBC9E32DC7 /* Check Pods Manifest.lock */,
+				B80DB2C51D33330D004CA6DB /* Sources */,
+				B80DB2C61D33330D004CA6DB /* Frameworks */,
+				B80DB2C71D33330D004CA6DB /* Resources */,
+				A30E865F256FAF3264EF4E27 /* Embed Pods Frameworks */,
+				FB9A7914EFB74ED484ECB9F0 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GDAudioPlayer;
+			productName = GDAudioPlayer;
+			productReference = B80DB2C91D33330D004CA6DB /* GDAudioPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B80DB2E11D33330D004CA6DB /* GDAudioPlayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B80DB2F91D33330D004CA6DB /* Build configuration list for PBXNativeTarget "GDAudioPlayerTests" */;
+			buildPhases = (
+				B80DB2DE1D33330D004CA6DB /* Sources */,
+				B80DB2DF1D33330D004CA6DB /* Frameworks */,
+				B80DB2E01D33330D004CA6DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B80DB2E41D33330D004CA6DB /* PBXTargetDependency */,
+			);
+			name = GDAudioPlayerTests;
+			productName = GDAudioPlayerTests;
+			productReference = B80DB2E21D33330D004CA6DB /* GDAudioPlayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B80DB2EC1D33330D004CA6DB /* GDAudioPlayerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B80DB2FC1D33330D004CA6DB /* Build configuration list for PBXNativeTarget "GDAudioPlayerUITests" */;
+			buildPhases = (
+				B80DB2E91D33330D004CA6DB /* Sources */,
+				B80DB2EA1D33330D004CA6DB /* Frameworks */,
+				B80DB2EB1D33330D004CA6DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B80DB2EF1D33330D004CA6DB /* PBXTargetDependency */,
+			);
+			name = GDAudioPlayerUITests;
+			productName = GDAudioPlayerUITests;
+			productReference = B80DB2ED1D33330D004CA6DB /* GDAudioPlayerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B80DB2C11D33330D004CA6DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Damon;
+				TargetAttributes = {
+					B80DB2C81D33330D004CA6DB = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					B80DB2E11D33330D004CA6DB = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = B80DB2C81D33330D004CA6DB;
+					};
+					B80DB2EC1D33330D004CA6DB = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = B80DB2C81D33330D004CA6DB;
+					};
+				};
+			};
+			buildConfigurationList = B80DB2C41D33330D004CA6DB /* Build configuration list for PBXProject "GDAudioPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B80DB2C01D33330D004CA6DB;
+			productRefGroup = B80DB2CA1D33330D004CA6DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B80DB2C81D33330D004CA6DB /* GDAudioPlayer */,
+				B80DB2E11D33330D004CA6DB /* GDAudioPlayerTests */,
+				B80DB2EC1D33330D004CA6DB /* GDAudioPlayerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B80DB2C71D33330D004CA6DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80DB2DC1D33330D004CA6DB /* LaunchScreen.storyboard in Resources */,
+				B80DB30F1D334A9A004CA6DB /* pushu.jpg in Resources */,
+				B80DB30E1D334A9A004CA6DB /* 那些花儿.mp3 in Resources */,
+				B80DB3111D334F8C004CA6DB /* 10405520.lrc in Resources */,
+				B80DB2D91D33330D004CA6DB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80DB2E01D33330D004CA6DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80DB2EB1D33330D004CA6DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A30E865F256FAF3264EF4E27 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5644294EF0E21EBC9E32DC7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FB9A7914EFB74ED484ECB9F0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B80DB2C51D33330D004CA6DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B810C3D51D35DF0D00E10F07 /* GDTensionView.m in Sources */,
+				B80DB2D11D33330D004CA6DB /* AppDelegate.m in Sources */,
+				B8228BC11D348E2400AEFC08 /* GDPresentTransition.m in Sources */,
+				B80DB3071D334125004CA6DB /* UIImage+Circle.m in Sources */,
+				B80DB3211D337CC6004CA6DB /* LrcTimeContentModel.m in Sources */,
+				B80DB31E1D3375AE004CA6DB /* LrcManger.m in Sources */,
+				B80DB3241D339C97004CA6DB /* GDNavigationController.m in Sources */,
+				B80DB3151D33607F004CA6DB /* GDLrcAnalysis.m in Sources */,
+				B810C3DA1D35DF1700E10F07 /* HomePageCollectionView.m in Sources */,
+				B810C3D01D35DE9100E10F07 /* MusicModel.m in Sources */,
+				B8228BC51D348E8300AEFC08 /* MenuViewController.m in Sources */,
+				B810C3DB1D35DF1700E10F07 /* MusicDetailVController.m in Sources */,
+				B80DB2CE1D33330D004CA6DB /* main.m in Sources */,
+				B80DB30A1D33492D004CA6DB /* GDTabbarController.m in Sources */,
+				B80DB3181D336289004CA6DB /* LrcModel.m in Sources */,
+				B810C3DF1D35DF5200E10F07 /* GD_DownloadCenter.m in Sources */,
+				B8228BC91D34AB0E00AEFC08 /* AudioPlayDetailVC.m in Sources */,
+				B810C3CD1D35DE8400E10F07 /* MDCell.m in Sources */,
+				B80DB3011D33334F004CA6DB /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80DB2DE1D33330D004CA6DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80DB2E71D33330D004CA6DB /* GDAudioPlayerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B80DB2E91D33330D004CA6DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80DB2F21D33330D004CA6DB /* GDAudioPlayerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B80DB2E41D33330D004CA6DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B80DB2C81D33330D004CA6DB /* GDAudioPlayer */;
+			targetProxy = B80DB2E31D33330D004CA6DB /* PBXContainerItemProxy */;
+		};
+		B80DB2EF1D33330D004CA6DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B80DB2C81D33330D004CA6DB /* GDAudioPlayer */;
+			targetProxy = B80DB2EE1D33330D004CA6DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B80DB2DA1D33330D004CA6DB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B80DB2DB1D33330D004CA6DB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B80DB2F41D33330D004CA6DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B80DB2F51D33330D004CA6DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B80DB2F71D33330D004CA6DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD94F803F987B1524FFD70B2 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = GDAudioPlayer/GDprefixHeader.pch;
+				INFOPLIST_FILE = GDAudioPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.chaui.cn.GDAudioPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B80DB2F81D33330D004CA6DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6C1D1BCFF9BE11DA6F05103 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = GDAudioPlayer/GDprefixHeader.pch;
+				INFOPLIST_FILE = GDAudioPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.chaui.cn.GDAudioPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B80DB2FA1D33330D004CA6DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GDAudioPlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.chaui.cn.GDAudioPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GDAudioPlayer.app/GDAudioPlayer";
+			};
+			name = Debug;
+		};
+		B80DB2FB1D33330D004CA6DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GDAudioPlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.chaui.cn.GDAudioPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GDAudioPlayer.app/GDAudioPlayer";
+			};
+			name = Release;
+		};
+		B80DB2FD1D33330D004CA6DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GDAudioPlayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.chaui.cn.GDAudioPlayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GDAudioPlayer;
+			};
+			name = Debug;
+		};
+		B80DB2FE1D33330D004CA6DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GDAudioPlayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.chaui.cn.GDAudioPlayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GDAudioPlayer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B80DB2C41D33330D004CA6DB /* Build configuration list for PBXProject "GDAudioPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B80DB2F41D33330D004CA6DB /* Debug */,
+				B80DB2F51D33330D004CA6DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B80DB2F61D33330D004CA6DB /* Build configuration list for PBXNativeTarget "GDAudioPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B80DB2F71D33330D004CA6DB /* Debug */,
+				B80DB2F81D33330D004CA6DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B80DB2F91D33330D004CA6DB /* Build configuration list for PBXNativeTarget "GDAudioPlayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B80DB2FA1D33330D004CA6DB /* Debug */,
+				B80DB2FB1D33330D004CA6DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B80DB2FC1D33330D004CA6DB /* Build configuration list for PBXNativeTarget "GDAudioPlayerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B80DB2FD1D33330D004CA6DB /* Debug */,
+				B80DB2FE1D33330D004CA6DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B80DB2C11D33330D004CA6DB /* Project object */;
+}
