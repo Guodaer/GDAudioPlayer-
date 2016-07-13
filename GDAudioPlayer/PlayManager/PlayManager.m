@@ -42,12 +42,11 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     if (isPlaying)[self gd_destroy];
     if (!self.player) {
         self.playerItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:urlString]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioPlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
         self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioPlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
         isPlaying = YES;
     }else{
         self.playerItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:urlString]];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioPlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
         [self.player replaceCurrentItemWithPlayerItem:self.playerItem];
         isPlaying = YES;
     }
@@ -85,7 +84,7 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
         NSLog(@"playbackBufferFull: change : %@", change);
         
     }else if([keyPath isEqualToString:Player_PresentationSize]){                //获取到视频的大小的时候调用
-        //       CGSize size = _playerItem.presentationSize;
+//               CGSize size = _playerItem.presentationSize;;
     }
     
 }
@@ -117,14 +116,12 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     [[NSNotificationCenter defaultCenter] postNotificationName:Notification_PLAY_Pause object:nil];
 }
 - (void)gd_destroy{
-    NSLog(@"2222222222222222");
     if (self.playerItem) {
         [self gd_pause];
-        NSLog(@"333333333333333333333333");
         [self.playerItem removeObserver:self forKeyPath:Player_Status context:nil];
         self.playerItem = nil;
     }
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self];
 }
 - (BOOL)currentPlay{
     return isPlaying;
