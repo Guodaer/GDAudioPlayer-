@@ -23,4 +23,11 @@
 
 - (void)gd_pause;
 
+/**
+ *  当前是否播放
+ *
+ *  @return 是否播放
+ */
+- (BOOL)currentPlay;
+
 @end

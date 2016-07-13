@@ -51,7 +51,7 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
         [self.player replaceCurrentItemWithPlayerItem:self.playerItem];
         isPlaying = YES;
     }
-    [self.player.currentItem addObserver:self forKeyPath:Player_Status options:NSKeyValueObservingOptionNew context:nil];
+    [self.playerItem addObserver:self forKeyPath:Player_Status options:NSKeyValueObservingOptionNew context:nil];
     [self backgrounddisplay:mname Singer:singer AVlayer:self.playerItem];
 }
 
@@ -91,7 +91,10 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
 }
 #pragma mark - 当前item播放完成
 - (void)audioPlayDidEnd:(NSNotification *)noti{
-    [self gd_destroy];
+    __weak typeof(self) weakSelf = self;
+    [self.player seekToTime:kCMTimeZero completionHandler:^(BOOL finished) {
+        [weakSelf gd_destroy];
+    }];
 }
 #pragma mark - 计算缓冲进度
 - (NSTimeInterval)availableDuration {
@@ -102,7 +105,6 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     NSTimeInterval result = startSeconds + durationSeconds;// 计算缓冲总进度
     return result;
 }
-
 
 - (void)gd_play{
     isPlaying = YES;
@@ -116,9 +118,16 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
 }
 - (void)gd_destroy{
     NSLog(@"2222222222222222");
-    [self gd_pause];
-    [self.player.currentItem removeObserver:self forKeyPath:Player_Status context:nil];
+    if (self.playerItem) {
+        [self gd_pause];
+        NSLog(@"333333333333333333333333");
+        [self.playerItem removeObserver:self forKeyPath:Player_Status context:nil];
+        self.playerItem = nil;
+    }
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self];
+}
+- (BOOL)currentPlay{
+    return isPlaying;
 }
 #pragma mark - 锁屏显示
 - (void)backgrounddisplay:(NSString *)name Singer:(NSString*)singer AVlayer:(AVPlayerItem*)player{
