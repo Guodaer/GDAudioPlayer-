@@ -22,6 +22,14 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = tabbar;
     [self.window makeKeyAndVisible];
+    
+    // 1.拿到AVAudioSession单例对象
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    // 2.设置类型
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    // 3.激活
+    [session setActive:YES error:nil];
+    
     return YES;
 }
 

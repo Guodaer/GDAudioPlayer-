@@ -23,13 +23,14 @@
 }
 - (void)createUI {
     
-    _name_Label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 200, 29)];
+    self.backgroundColor = [UIColor clearColor];
+    _name_Label = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, 200, 29)];
     _name_Label.textColor = [UIColor whiteColor];
-    _name_Label.font = [UIFont systemFontOfSize:15];
+    _name_Label.font = [UIFont systemFontOfSize:17];
     [self.contentView addSubview:_name_Label];
     
-    _singer_Label = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 200,15)];
-    _singer_Label.textColor = [UIColor whiteColor];
+    _singer_Label = [[UILabel alloc] initWithFrame:CGRectMake(15, 40, 200,15)];
+    _singer_Label.textColor = [UIColor grayColor];
     _singer_Label.font = [UIFont systemFontOfSize:12];
     [self.contentView addSubview:_singer_Label];
     

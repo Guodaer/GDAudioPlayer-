@@ -34,6 +34,9 @@
 		B8228BC11D348E2400AEFC08 /* GDPresentTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B8228BC01D348E2400AEFC08 /* GDPresentTransition.m */; };
 		B8228BC51D348E8300AEFC08 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8228BC41D348E8300AEFC08 /* MenuViewController.m */; };
 		B8228BC91D34AB0E00AEFC08 /* AudioPlayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B8228BC81D34AB0E00AEFC08 /* AudioPlayDetailVC.m */; };
+		B8BDBBC21D35FFD10014F656 /* HomeManagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BDBBC11D35FFD10014F656 /* HomeManagerView.m */; };
+		B8BDBBC51D3602560014F656 /* DownloadVController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BDBBC41D3602560014F656 /* DownloadVController.m */; };
+		B8BDBBC91D3615E20014F656 /* PlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BDBBC81D3615E20014F656 /* PlayManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +60,8 @@
 		793DF0D02585527B97B3639A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80DB2C91D33330D004CA6DB /* GDAudioPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GDAudioPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80DB2CD1D33330D004CA6DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B80DB2CF1D33330D004CA6DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B80DB2D01D33330D004CA6DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B80DB2CF1D33330D004CA6DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
+		B80DB2D01D33330D004CA6DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
 		B80DB2D81D33330D004CA6DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B80DB2DB1D33330D004CA6DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B80DB2DD1D33330D004CA6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,14 +71,14 @@
 		B80DB2ED1D33330D004CA6DB /* GDAudioPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GDAudioPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80DB2F11D33330D004CA6DB /* GDAudioPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDAudioPlayerUITests.m; sourceTree = "<group>"; };
 		B80DB2F31D33330D004CA6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B80DB2FF1D33334F004CA6DB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		B80DB3001D33334F004CA6DB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		B80DB2FF1D33334F004CA6DB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../RootViewController.h; sourceTree = "<group>"; };
+		B80DB3001D33334F004CA6DB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../RootViewController.m; sourceTree = "<group>"; };
 		B80DB3021D333686004CA6DB /* GDPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDPrefixHeader.pch; sourceTree = "<group>"; };
 		B80DB3031D3336D6004CA6DB /* GD_CustomCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GD_CustomCenter.h; sourceTree = "<group>"; };
 		B80DB3051D334125004CA6DB /* UIImage+Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Circle.h"; sourceTree = "<group>"; };
 		B80DB3061D334125004CA6DB /* UIImage+Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Circle.m"; sourceTree = "<group>"; };
-		B80DB3081D33492D004CA6DB /* GDTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTabbarController.h; sourceTree = "<group>"; };
-		B80DB3091D33492D004CA6DB /* GDTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDTabbarController.m; sourceTree = "<group>"; };
+		B80DB3081D33492D004CA6DB /* GDTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDTabbarController.h; path = ../GDTabbarController.h; sourceTree = "<group>"; };
+		B80DB3091D33492D004CA6DB /* GDTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDTabbarController.m; path = ../GDTabbarController.m; sourceTree = "<group>"; };
 		B80DB30C1D334A9A004CA6DB /* 那些花儿.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "那些花儿.mp3"; sourceTree = "<group>"; };
 		B80DB30D1D334A9A004CA6DB /* pushu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pushu.jpg; sourceTree = "<group>"; };
 		B80DB3101D334F8C004CA6DB /* 10405520.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 10405520.lrc; sourceTree = "<group>"; };
@@ -87,8 +90,8 @@
 		B80DB31D1D3375AE004CA6DB /* LrcManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LrcManger.m; sourceTree = "<group>"; };
 		B80DB31F1D337CC6004CA6DB /* LrcTimeContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LrcTimeContentModel.h; sourceTree = "<group>"; };
 		B80DB3201D337CC6004CA6DB /* LrcTimeContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LrcTimeContentModel.m; sourceTree = "<group>"; };
-		B80DB3221D339C97004CA6DB /* GDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDNavigationController.h; sourceTree = "<group>"; };
-		B80DB3231D339C97004CA6DB /* GDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDNavigationController.m; sourceTree = "<group>"; };
+		B80DB3221D339C97004CA6DB /* GDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GDNavigationController.h; path = ../GDNavigationController.h; sourceTree = "<group>"; };
+		B80DB3231D339C97004CA6DB /* GDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GDNavigationController.m; path = ../GDNavigationController.m; sourceTree = "<group>"; };
 		B810C3CB1D35DE8400E10F07 /* MDCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCell.h; sourceTree = "<group>"; };
 		B810C3CC1D35DE8400E10F07 /* MDCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCell.m; sourceTree = "<group>"; };
 		B810C3CE1D35DE9100E10F07 /* MusicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicModel.h; sourceTree = "<group>"; };
@@ -107,6 +110,12 @@
 		B8228BC41D348E8300AEFC08 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		B8228BC71D34AB0E00AEFC08 /* AudioPlayDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayDetailVC.h; sourceTree = "<group>"; };
 		B8228BC81D34AB0E00AEFC08 /* AudioPlayDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayDetailVC.m; sourceTree = "<group>"; };
+		B8BDBBC01D35FFD10014F656 /* HomeManagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeManagerView.h; sourceTree = "<group>"; };
+		B8BDBBC11D35FFD10014F656 /* HomeManagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeManagerView.m; sourceTree = "<group>"; };
+		B8BDBBC31D3602560014F656 /* DownloadVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadVController.h; sourceTree = "<group>"; };
+		B8BDBBC41D3602560014F656 /* DownloadVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadVController.m; sourceTree = "<group>"; };
+		B8BDBBC71D3615E20014F656 /* PlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayManager.h; sourceTree = "<group>"; };
+		B8BDBBC81D3615E20014F656 /* PlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayManager.m; sourceTree = "<group>"; };
 		C6C1D1BCFF9BE11DA6F05103 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CD94F803F987B1524FFD70B2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,16 +180,10 @@
 		B80DB2CB1D33330D004CA6DB /* GDAudioPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				B810C3C91D35DE6100E10F07 /* Model */,
 				B810C3C81D35DE5900E10F07 /* cell */,
-				B80DB2CF1D33330D004CA6DB /* AppDelegate.h */,
-				B80DB2D01D33330D004CA6DB /* AppDelegate.m */,
-				B80DB3081D33492D004CA6DB /* GDTabbarController.h */,
-				B80DB3091D33492D004CA6DB /* GDTabbarController.m */,
-				B80DB3221D339C97004CA6DB /* GDNavigationController.h */,
-				B80DB3231D339C97004CA6DB /* GDNavigationController.m */,
-				B80DB2FF1D33334F004CA6DB /* RootViewController.h */,
-				B80DB3001D33334F004CA6DB /* RootViewController.m */,
+				B810C3C91D35DE6100E10F07 /* Model */,
+				B8BDBBBF1D35E68C0014F656 /* SystemRoot */,
+				B8BDBBC61D3615A00014F656 /* PlayManager */,
 				B8228BC61D34AAC000AEFC08 /* PlayDetailVC */,
 				B80DB3261D33A5FF004CA6DB /* MenuViewController */,
 				B810C3D11D35DEE400E10F07 /* MusicView */,
@@ -288,6 +291,7 @@
 		B810C3CA1D35DE6C00E10F07 /* MyLib */ = {
 			isa = PBXGroup;
 			children = (
+				B810C3D21D35DF0500E10F07 /* 拉伸 */,
 				B810C3DC1D35DF5200E10F07 /* Download */,
 				B80DB30B1D334A82004CA6DB /* source */,
 				B80DB3041D33411A004CA6DB /* Category */,
@@ -299,11 +303,14 @@
 		B810C3D11D35DEE400E10F07 /* MusicView */ = {
 			isa = PBXGroup;
 			children = (
+				B8BDBBC01D35FFD10014F656 /* HomeManagerView.h */,
+				B8BDBBC11D35FFD10014F656 /* HomeManagerView.m */,
+				B8BDBBC31D3602560014F656 /* DownloadVController.h */,
+				B8BDBBC41D3602560014F656 /* DownloadVController.m */,
 				B810C3D61D35DF1700E10F07 /* HomePageCollectionView.h */,
 				B810C3D71D35DF1700E10F07 /* HomePageCollectionView.m */,
 				B810C3D81D35DF1700E10F07 /* MusicDetailVController.h */,
 				B810C3D91D35DF1700E10F07 /* MusicDetailVController.m */,
-				B810C3D21D35DF0500E10F07 /* 拉伸 */,
 			);
 			path = MusicView;
 			sourceTree = "<group>";
@@ -315,6 +322,7 @@
 				B810C3D41D35DF0D00E10F07 /* GDTensionView.m */,
 			);
 			name = "拉伸";
+			path = ../MusicView;
 			sourceTree = "<group>";
 		};
 		B810C3DC1D35DF5200E10F07 /* Download */ = {
@@ -343,6 +351,30 @@
 				B8228BC81D34AB0E00AEFC08 /* AudioPlayDetailVC.m */,
 			);
 			path = PlayDetailVC;
+			sourceTree = "<group>";
+		};
+		B8BDBBBF1D35E68C0014F656 /* SystemRoot */ = {
+			isa = PBXGroup;
+			children = (
+				B80DB2CF1D33330D004CA6DB /* AppDelegate.h */,
+				B80DB2D01D33330D004CA6DB /* AppDelegate.m */,
+				B80DB3081D33492D004CA6DB /* GDTabbarController.h */,
+				B80DB3091D33492D004CA6DB /* GDTabbarController.m */,
+				B80DB3221D339C97004CA6DB /* GDNavigationController.h */,
+				B80DB3231D339C97004CA6DB /* GDNavigationController.m */,
+				B80DB2FF1D33334F004CA6DB /* RootViewController.h */,
+				B80DB3001D33334F004CA6DB /* RootViewController.m */,
+			);
+			path = SystemRoot;
+			sourceTree = "<group>";
+		};
+		B8BDBBC61D3615A00014F656 /* PlayManager */ = {
+			isa = PBXGroup;
+			children = (
+				B8BDBBC71D3615E20014F656 /* PlayManager.h */,
+				B8BDBBC81D3615E20014F656 /* PlayManager.m */,
+			);
+			path = PlayManager;
 			sourceTree = "<group>";
 		};
 		C03F1D0A485DCE97C2DAB2CA /* Frameworks */ = {
@@ -537,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B810C3D51D35DF0D00E10F07 /* GDTensionView.m in Sources */,
+				B8BDBBC51D3602560014F656 /* DownloadVController.m in Sources */,
 				B80DB2D11D33330D004CA6DB /* AppDelegate.m in Sources */,
 				B8228BC11D348E2400AEFC08 /* GDPresentTransition.m in Sources */,
 				B80DB3071D334125004CA6DB /* UIImage+Circle.m in Sources */,
@@ -551,8 +584,10 @@
 				B80DB2CE1D33330D004CA6DB /* main.m in Sources */,
 				B80DB30A1D33492D004CA6DB /* GDTabbarController.m in Sources */,
 				B80DB3181D336289004CA6DB /* LrcModel.m in Sources */,
+				B8BDBBC21D35FFD10014F656 /* HomeManagerView.m in Sources */,
 				B810C3DF1D35DF5200E10F07 /* GD_DownloadCenter.m in Sources */,
 				B8228BC91D34AB0E00AEFC08 /* AudioPlayDetailVC.m in Sources */,
+				B8BDBBC91D3615E20014F656 /* PlayManager.m in Sources */,
 				B810C3CD1D35DE8400E10F07 /* MDCell.m in Sources */,
 				B80DB3011D33334F004CA6DB /* RootViewController.m in Sources */,
 			);

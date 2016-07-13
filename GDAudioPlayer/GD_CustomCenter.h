@@ -129,4 +129,6 @@ typedef enum : NSUInteger {
 
 #define GET_musiclist [NSString stringWithFormat:@"%@%@",Home_Server_HttpAddress,@"getmusiclist"]
 
+#define Get_mdlurl [NSString stringWithFormat:@"%@%@",Home_Server_HttpAddress,@"getmdlurl"]
+
 #endif /* GD_CustomCenter_h */

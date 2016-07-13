@@ -26,3 +26,16 @@
 @property (copy,nonatomic) NSString *msize;
 @property (copy,nonatomic) NSString *mstate;
 @end
+//获取音乐URL
+@interface GetMusicFileUrlModel : NSObject
+@property (copy,nonatomic) NSString *result;
+@property (copy,nonatomic) NSString *mfname;
+@property (copy,nonatomic) NSString *mfsize;
+@property (copy,nonatomic) NSString *mid;
+@property (copy,nonatomic) NSString *msname;
+@property (copy,nonatomic) NSString *err;
+@property (copy,nonatomic) NSString *mfile;
+@property (copy,nonatomic) NSString *mssize;
+@property (copy,nonatomic) NSString *mname;
+@property (copy,nonatomic) NSString *msimg;
+@end

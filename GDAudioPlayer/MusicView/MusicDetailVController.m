@@ -9,8 +9,11 @@
 #import "MusicDetailVController.h"
 #import "GDTensionView.h"
 #import "MDCell.h"
-@interface MusicDetailVController ()<UITableViewDelegate,UITableViewDataSource>
 
+@interface MusicDetailVController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    NSMutableArray *_getmusicUrlArray;
+}
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -24,14 +27,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _getmusicUrlArray = [NSMutableArray array];
     _dataArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
     UIImageView *bgimageView = [[UIImageView alloc] initWithFrame:self.view.frame];
     bgimageView.image = XUIImage(@"side_bg1");
     [self.view addSubview:bgimageView];
 
-    NSLog(@"%@",_needModel.maname);
+    self.navigationItem.title = _needModel.maname;
     
     [self createMainUI];
 
@@ -65,7 +68,7 @@
             //修改本地
             [self.tensionView imageViewStretchingWithOffSet:offsetY];
         }
-        if (offsetY<-100) {
+        if (offsetY<-80) {
             _interestLabel.hidden = NO;
         }else{
             _interestLabel.hidden = YES;
@@ -76,7 +79,7 @@
     return _dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    return 60;
 }
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -85,14 +88,55 @@
     if (cell) {
         cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     }
-//    for (id subView in cell.contentView.subviews) {
-//        [subView removeFromSuperview];
-//    }
+
+    UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [moreBtn setImage:XUIImage(@"MD_MoreHandle") forState:UIControlStateNormal];
+    moreBtn.frame = CGRectMake(SCREENWIDTH - 50, (60-40)/2, 50, 40);
+    [moreBtn addTarget:self action:@selector(cellMoreButtonSelectedRowAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
+    moreBtn.tag = indexPath.row;
+    [cell addSubview:moreBtn];
+    
     DetailMusicListModel *model = _dataArray[indexPath.row];
-    NSLog(@"");
     cell.name_Label.text = [NSString stringWithFormat:@"%@",model.mname];
     cell.singer_Label.text = [NSString stringWithFormat:@"%@",model.msinger];
     return cell;
+}
+- (void)cellMoreButtonSelectedRowAtIndexPath:(UIButton *)sender{
+    
+    DetailMusicListModel *model = _dataArray[sender.tag];
+
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"下载(%@)",model.mname] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertVC addAction:action1];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alertVC addAction:action2];
+    
+    [self presentViewController:alertVC animated:YES completion:nil];
+    
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    DetailMusicListModel *model = _dataArray[indexPath.row];
+
+    [self getlistenMusicURL:[NSString stringWithFormat:@"%@",model.mid]];
+}
+
+- (void)getlistenMusicURL:(NSString *)mid{
+
+    [[GD_DownloadCenter manager] postRequestWithURL:Get_mdlurl parameters:@{@"pver":@"1",@"Mid":mid} callBlock:^(id responseObject) {
+
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        GetMusicFileUrlModel *model = [[GetMusicFileUrlModel alloc] init];
+        [model setValuesForKeysWithDictionary:dic];
+//        [_getmusicUrlArray addObject:model];
+        [[PlayManager defaultManager] prepareToPlayMusicWithURl:model.mfile];
+    } callError:^(id Error) {
+        GDLog(@"Error");
+    }];
+    
 }
 
 - (UITableView *)tableView {
@@ -119,7 +163,7 @@
                 [_dataArray addObject:model];
             }
         }
-//        [_tableView reloadData];
+        [_tableView reloadData];
     } callError:^(id Error) {
         GDLog(@"error");
     }];

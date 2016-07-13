@@ -18,3 +18,8 @@
 
 }
 @end
+@implementation GetMusicFileUrlModel
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    
+}
+@end

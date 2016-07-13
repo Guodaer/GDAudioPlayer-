@@ -36,7 +36,6 @@
     [self.view addSubview:_bgView];
     
     RootViewController *root = [[RootViewController alloc] init];
-    root.title = @"GDMusicPlayer";
     GDNavigationController *nav = [[GDNavigationController alloc] initWithRootViewController:root];
     [nav.navigationBar setBackgroundImage:XUIImage(@"navAlpha0") forBarMetrics:0];
     [nav.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor whiteColor]}];

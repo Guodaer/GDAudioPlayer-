@@ -25,4 +25,6 @@
 
 #import "UIImageView+WebCache.h"
 
+#import "PlayManager.h"
+
 #endif /* GDPrefixHeader_pch */
