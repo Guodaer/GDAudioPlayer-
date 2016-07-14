@@ -29,4 +29,8 @@
 
 #import "FMDB.h"
 
+#import "PlayListSQL.h"
+
+#import "SingleManager.h"
+
 #endif /* GDPrefixHeader_pch */

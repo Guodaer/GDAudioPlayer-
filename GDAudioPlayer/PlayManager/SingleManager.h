@@ -12,4 +12,6 @@
 
 + (instancetype)defaultManager;
 
+- (NSInteger)indexofMid:(NSString*)mid where:(NSArray*)array;
+
 @end

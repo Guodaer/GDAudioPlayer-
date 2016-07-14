@@ -40,6 +40,7 @@
 		B8CEBBF51D3738BD0053DF5A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CEBBF41D3738BD0053DF5A /* libsqlite3.0.tbd */; };
 		B8CEBBF91D373A440053DF5A /* SingleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CEBBF81D373A440053DF5A /* SingleManager.m */; };
 		B8CEBBFC1D373ACD0053DF5A /* PlayListSQL.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CEBBFB1D373ACD0053DF5A /* PlayListSQL.m */; };
+		B8CEBBFF1D376AD90053DF5A /* GetMusicUrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CEBBFE1D376AD90053DF5A /* GetMusicUrlManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,8 @@
 		B8CEBBF81D373A440053DF5A /* SingleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleManager.m; sourceTree = "<group>"; };
 		B8CEBBFA1D373ACD0053DF5A /* PlayListSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayListSQL.h; sourceTree = "<group>"; };
 		B8CEBBFB1D373ACD0053DF5A /* PlayListSQL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayListSQL.m; sourceTree = "<group>"; };
+		B8CEBBFD1D376AD90053DF5A /* GetMusicUrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMusicUrlManager.h; sourceTree = "<group>"; };
+		B8CEBBFE1D376AD90053DF5A /* GetMusicUrlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMusicUrlManager.m; sourceTree = "<group>"; };
 		C6C1D1BCFF9BE11DA6F05103 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CD94F803F987B1524FFD70B2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -340,6 +343,8 @@
 			children = (
 				B810C3DD1D35DF5200E10F07 /* GD_DownloadCenter.h */,
 				B810C3DE1D35DF5200E10F07 /* GD_DownloadCenter.m */,
+				B8CEBBFD1D376AD90053DF5A /* GetMusicUrlManager.h */,
+				B8CEBBFE1D376AD90053DF5A /* GetMusicUrlManager.m */,
 			);
 			path = Download;
 			sourceTree = "<group>";
@@ -598,6 +603,7 @@
 				B80DB3211D337CC6004CA6DB /* LrcTimeContentModel.m in Sources */,
 				B80DB31E1D3375AE004CA6DB /* LrcManger.m in Sources */,
 				B80DB3241D339C97004CA6DB /* GDNavigationController.m in Sources */,
+				B8CEBBFF1D376AD90053DF5A /* GetMusicUrlManager.m in Sources */,
 				B80DB3151D33607F004CA6DB /* GDLrcAnalysis.m in Sources */,
 				B810C3DA1D35DF1700E10F07 /* HomePageCollectionView.m in Sources */,
 				B8CEBBFC1D373ACD0053DF5A /* PlayListSQL.m in Sources */,

@@ -9,10 +9,11 @@
 #import "MusicDetailVController.h"
 #import "GDTensionView.h"
 #import "MDCell.h"
-
+#import "GetMusicUrlManager.h"
 @interface MusicDetailVController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *_getmusicUrlArray;
+    BOOL isInsertPLSQL;
 }
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
@@ -27,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    isInsertPLSQL = NO;
     _getmusicUrlArray = [NSMutableArray array];
     _dataArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
@@ -120,25 +122,24 @@
     
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     DetailMusicListModel *model = _dataArray[indexPath.row];
-
-    [self getlistenMusicURL:[NSString stringWithFormat:@"%@",model.mid] Singer:model.msinger];
+    if (!isInsertPLSQL) {
+        [self insert_SQLPL];
+        isInsertPLSQL=YES;
+    }
+    [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",model.mid] Singer:model.msinger Album:_needModel.maname];
 }
-#pragma mark - 请求得到音乐流的地址
-- (void)getlistenMusicURL:(NSString *)mid Singer:(NSString*)singer{
-
-    [[GD_DownloadCenter manager] postRequestWithURL:Get_mdlurl parameters:@{@"pver":@"1",@"Mid":mid} callBlock:^(id responseObject) {
-
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        GetMusicFileUrlModel *model = [[GetMusicFileUrlModel alloc] init];
-        [model setValuesForKeysWithDictionary:dic];
-
-        [[PlayManager defaultManager] prepareToPlayMusicWithURl:model.mfile mname:model.mname Singer:singer Album:_needModel.maname];
-    } callError:^(id Error) {
-        GDLog(@"Error");
-    }];
-    
+- (void)insert_SQLPL{
+    [[PlayListSQL shareInstance] createPlaylistSQL];
+    [[PlayListSQL shareInstance] delete_playlistdata];
+    if (_dataArray.count>0) {
+        __weak typeof(self) weakSelf = self;
+        [_dataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            //插库
+            DetailMusicListModel *model = weakSelf.dataArray[idx];
+            [[PlayListSQL shareInstance] insert_playlistWithMid:model.mid Mname:model.mname MSinger:model.msinger MState:model.mstate Mlrc:@"no" MIcon:@"no" MFile:@"no"];
+        }];
+    }
 }
-
 - (UITableView *)tableView {
     if (!_tableView) {
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-60-64)];

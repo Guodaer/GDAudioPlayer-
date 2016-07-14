@@ -8,7 +8,8 @@
 
 #import "PlayManager.h"
 #import <MediaPlayer/MediaPlayer.h>
-
+#import "MusicModel.h"
+#import "GetMusicUrlManager.h"
 NSString * const Player_Status = @"status";                                 //获取到视频信息的状态, 成功就可以进行播放, 失败代表加载失败
 NSString * const Player_LoadedTimeRanges = @"loadedTimeRanges";             //当缓冲进度有变化的时候
 NSString * const Player_PlaybackLikelyToKeepUp = @"playbackLikelyToKeepUp"; //当视频播放因为各种状态播放停止的时候, 这个属性会发生变化
@@ -22,7 +23,8 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     NSString *_name;
     NSString *_singer;
     NSString *_album;
-    
+    NSString *_mid;
+    NSInteger currentMusicIndex;//当前播放的歌的位置
 }
 @property (nonatomic, strong) AVPlayer *player;
 
@@ -41,8 +43,8 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     return manager;
 }
 
-- (void)prepareToPlayMusicWithURl:(NSString *)urlString mname:(NSString *)mname Singer:(NSString*)singer Album:(NSString*)album{
-    _name = mname;_singer = singer;_album = album;
+- (void)prepareToPlayMusicWithURl:(NSString *)urlString mname:(NSString *)mname Singer:(NSString*)singer Album:(NSString*)album Mid:(NSString *)mid{
+    _name = mname;_singer = singer;_album = album;_mid = mid;
     [[NSNotificationCenter defaultCenter] postNotificationName:Notification_PLAY_NowMusicMessage object:self userInfo:@{@"name":mname,@"singer":singer}];
     if (isPlaying)[self gd_destroy];
     if (!self.player) {
@@ -99,6 +101,7 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     __weak typeof(self) weakSelf = self;
     [self.player seekToTime:kCMTimeZero completionHandler:^(BOOL finished) {
         [weakSelf gd_destroy];
+        [weakSelf autoPlayNextMusic];
     }];
 }
 #pragma mark - 计算缓冲进度
@@ -127,7 +130,6 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
         [self.playerItem removeObserver:self forKeyPath:Player_Status context:nil];
         self.playerItem = nil;
     }
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:self];
 }
 - (BOOL)currentPlay{
     return isPlaying;
@@ -159,4 +161,35 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
 
+
+/**
+ *  切歌
+ */
+- (void)autoPlayNextMusic {
+   //之前播放的歌在list中的位置
+    isPlaying = YES;
+    NSArray *array = [[PlayListSQL shareInstance] SQL_getPlaylist_FromDB];
+    if (array<=0) {
+        isPlaying = NO;
+        return;
+    }
+    currentMusicIndex = [[SingleManager defaultManager] indexofMid:[NSString stringWithFormat:@"%@",_mid] where:array];
+    GDLog(@"%ld",currentMusicIndex);
+    currentMusicIndex++;
+    if (currentMusicIndex > array.count-1) {
+        currentMusicIndex = 0;
+    }
+    GDLog(@"%ld",currentMusicIndex);
+    NSDictionary *dic = array[currentMusicIndex];
+    [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",dic[@"mid"]] Singer:dic[@"msinger"] Album:_album];
+    
+}
+- (void)next{
+    
+    
+    
+}
+- (void)Previous{
+    
+}
 @end

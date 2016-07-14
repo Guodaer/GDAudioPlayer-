@@ -45,10 +45,11 @@
     [self createHomePageCollection];
     [self createHomeManagerView];
     
-    [[PlayListSQL shareInstance] createPlaylistSQL];
-    [[PlayListSQL shareInstance] insert_playlistWithMid:@"1" Mname:@"2" MSinger:@"3" MState:@"4"];
-    [[PlayListSQL shareInstance] update_plMState:@"100" whereMid:@"1"];
-    [[PlayListSQL shareInstance] delete_playlistdata];
+//    [[PlayListSQL shareInstance] createPlaylistSQL];
+//    [[PlayListSQL shareInstance] insert_playlistWithMid:@"1" Mname:@"2" MSinger:@"3" MState:@"4"];
+//    [[PlayListSQL shareInstance] update_plMState:@"100" whereMid:@"1"];
+//    [[PlayListSQL shareInstance] delete_playlistdata];
+//    NSLog(@"%@",[[PlayListSQL shareInstance] getplaylsit_mid]);
 }
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
