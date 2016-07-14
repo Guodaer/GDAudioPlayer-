@@ -55,7 +55,7 @@
     
     
     [self.view addSubview:self.tableView];
-    [self.tableView registerClass:[MDCell class] forCellReuseIdentifier:@"cell"];
+//    [self.tableView registerClass:[MDCell class] forCellReuseIdentifier:@"cell"];
 
     self.tableView.tableHeaderView = self.tensionView;
     
@@ -86,9 +86,9 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *cellID = @"cell";
-    MDCell *cell = [[MDCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
-    if (cell) {
-        cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    MDCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell==nil) {
+        cell = [[MDCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
     }
     UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [moreBtn setImage:XUIImage(@"MD_MoreHandle") forState:UIControlStateNormal];

@@ -168,20 +168,24 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
 - (void)autoPlayNextMusic {
    //之前播放的歌在list中的位置
     isPlaying = YES;
+    [[PlayListSQL shareInstance] createPlaylistSQL];
     NSArray *array = [[PlayListSQL shareInstance] SQL_getPlaylist_FromDB];
-    if (array<=0) {
+    GDLog(@"arrcount - %ld",array.count);
+    if (array.count>0) {
+        currentMusicIndex = [[SingleManager defaultManager] indexofMid:[NSString stringWithFormat:@"%@",_mid] where:array];
+        GDLog(@"%ld",currentMusicIndex);
+        currentMusicIndex++;
+        if (currentMusicIndex > array.count-1) {
+            currentMusicIndex = 0;
+        }
+        GDLog(@"%ld",currentMusicIndex);
+        NSDictionary *dic = array[currentMusicIndex];
+        [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",dic[@"mid"]] Singer:dic[@"msinger"] Album:_album];
+    }else{
         isPlaying = NO;
         return;
     }
-    currentMusicIndex = [[SingleManager defaultManager] indexofMid:[NSString stringWithFormat:@"%@",_mid] where:array];
-    GDLog(@"%ld",currentMusicIndex);
-    currentMusicIndex++;
-    if (currentMusicIndex > array.count-1) {
-        currentMusicIndex = 0;
-    }
-    GDLog(@"%ld",currentMusicIndex);
-    NSDictionary *dic = array[currentMusicIndex];
-    [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",dic[@"mid"]] Singer:dic[@"msinger"] Album:_album];
+    
     
 }
 - (void)next{

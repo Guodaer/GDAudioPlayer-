@@ -10,7 +10,7 @@
 #import "GDPresentTransition.h"
 #define BHLOOPBTNTAG 1000
 #define BHCLEARBTNTAG 1001
-@interface MenuViewController ()<UIViewControllerTransitioningDelegate>
+@interface MenuViewController ()<UIViewControllerTransitioningDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIView *bottomView;
@@ -19,6 +19,8 @@
 @property (nonatomic, strong) UILabel *bottomHead_Label;
 @property (nonatomic, strong) UIButton *bottomHead_loopButton;
 @property (nonatomic, strong) UIButton *bottomHead_clearButton;
+
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end
 
 @implementation MenuViewController
@@ -35,6 +37,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _dataArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -46,6 +49,60 @@
     [self.bottomView addSubview:self.tableView];
     [self bottomHeadView];
     
+    [self getDataSource];
+}
+- (void)getDataSource{
+    [[PlayListSQL shareInstance] createPlaylistSQL];
+    NSArray *array = [[PlayListSQL shareInstance] SQL_getPlaylist_FromDB];
+    
+    _dataArray = [NSMutableArray arrayWithArray:array];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
+    
+}
+#pragma mark - tableview
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _dataArray.count;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44;
+}
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellID = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell==nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+        cell.backgroundColor = [UIColor clearColor];
+    }
+    for (id object in cell.subviews) {
+        [object removeFromSuperview];
+    }
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 43.5, SCREENWIDTH-15, 0.5)];
+    line.backgroundColor = [UIColor whiteColor];
+    [cell addSubview:line];
+    
+    NSDictionary *dic = _dataArray[indexPath.row];
+    UILabel *mname = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 150, 24)];
+    mname.text = dic[@"mname"];
+    mname.font = [UIFont systemFontOfSize:15];
+    mname.textColor = XUIColor(0xffffff, 0.9);
+    [cell addSubview:mname];
+    
+    UILabel *msinger = [[UILabel alloc] initWithFrame:CGRectMake(15, 25, 150, 17)];
+    msinger.text = dic[@"msinger"];
+    msinger.textColor = XUIColor(0xededed, 0.9);
+    msinger.font = [UIFont systemFontOfSize:13];
+    [cell addSubview:msinger];
+
+    return cell;
+    
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 #pragma mark - 播放队列，循环模式，清空按钮
@@ -73,9 +130,15 @@
     
     
 }
+#pragma mark  - 按钮
 - (void)menuBtnClick:(UIButton *)sender {
     
     if (sender.tag == BHCLEARBTNTAG) {
+        
+        [[PlayListSQL shareInstance]createPlaylistSQL];
+        [[PlayListSQL shareInstance] delete_playlistdata];
+//        [self getDataSource];
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     }else if (sender.tag == BHLOOPBTNTAG){
         NSNumber *loopmodel = UserDefault(Menu_LoopModel);
@@ -142,6 +205,8 @@
     if (!_tableView) {
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44.5, SCREENWIDTH, 205.5)];
         tableView.backgroundColor = [UIColor clearColor];
+        tableView.delegate = self;
+        tableView.dataSource = self;
         _tableView = tableView;
     }
     return _tableView;
