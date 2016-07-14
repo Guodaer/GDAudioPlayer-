@@ -81,11 +81,11 @@ typedef enum : NSUInteger {
 /**
  *  沙盒路径-缓存/Library/XZSP
  */
-#define Local_Home_Library_Path ([NSString stringWithFormat:@"%@/Library/XZSP",NSHomeDirectory()])
+#define Local_Home_File_Path ([NSString stringWithFormat:@"%@/Library/XZSP",NSHomeDirectory()])
 /**Caches
  *  沙盒路径-表
  */
-#define Local_Home_Documents_Path ([NSString stringWithFormat:@"%@/Library",NSHomeDirectory()])
+#define Local_Home_DB_Path ([NSString stringWithFormat:@"%@/Library/db",NSHomeDirectory()])
 
 //角度转弧度
 #define DEGREES_TO_RADIANS(d) (d * M_PI / 180)

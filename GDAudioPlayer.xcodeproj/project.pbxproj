@@ -37,6 +37,9 @@
 		B8BDBBC21D35FFD10014F656 /* HomeManagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BDBBC11D35FFD10014F656 /* HomeManagerView.m */; };
 		B8BDBBC51D3602560014F656 /* DownloadVController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BDBBC41D3602560014F656 /* DownloadVController.m */; };
 		B8BDBBC91D3615E20014F656 /* PlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BDBBC81D3615E20014F656 /* PlayManager.m */; };
+		B8CEBBF51D3738BD0053DF5A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CEBBF41D3738BD0053DF5A /* libsqlite3.0.tbd */; };
+		B8CEBBF91D373A440053DF5A /* SingleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CEBBF81D373A440053DF5A /* SingleManager.m */; };
+		B8CEBBFC1D373ACD0053DF5A /* PlayListSQL.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CEBBFB1D373ACD0053DF5A /* PlayListSQL.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +119,11 @@
 		B8BDBBC41D3602560014F656 /* DownloadVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadVController.m; sourceTree = "<group>"; };
 		B8BDBBC71D3615E20014F656 /* PlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayManager.h; sourceTree = "<group>"; };
 		B8BDBBC81D3615E20014F656 /* PlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayManager.m; sourceTree = "<group>"; };
+		B8CEBBF41D3738BD0053DF5A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		B8CEBBF71D373A440053DF5A /* SingleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleManager.h; sourceTree = "<group>"; };
+		B8CEBBF81D373A440053DF5A /* SingleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleManager.m; sourceTree = "<group>"; };
+		B8CEBBFA1D373ACD0053DF5A /* PlayListSQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayListSQL.h; sourceTree = "<group>"; };
+		B8CEBBFB1D373ACD0053DF5A /* PlayListSQL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayListSQL.m; sourceTree = "<group>"; };
 		C6C1D1BCFF9BE11DA6F05103 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CD94F803F987B1524FFD70B2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8CEBBF51D3738BD0053DF5A /* libsqlite3.0.tbd in Frameworks */,
 				1E8215D9A9510CED8F869E24 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +300,7 @@
 		B810C3CA1D35DE6C00E10F07 /* MyLib */ = {
 			isa = PBXGroup;
 			children = (
+				B8CEBBF61D3739F90053DF5A /* SQL */,
 				B810C3D21D35DF0500E10F07 /* 拉伸 */,
 				B810C3DC1D35DF5200E10F07 /* Download */,
 				B80DB30B1D334A82004CA6DB /* source */,
@@ -373,13 +383,25 @@
 			children = (
 				B8BDBBC71D3615E20014F656 /* PlayManager.h */,
 				B8BDBBC81D3615E20014F656 /* PlayManager.m */,
+				B8CEBBF71D373A440053DF5A /* SingleManager.h */,
+				B8CEBBF81D373A440053DF5A /* SingleManager.m */,
 			);
 			path = PlayManager;
+			sourceTree = "<group>";
+		};
+		B8CEBBF61D3739F90053DF5A /* SQL */ = {
+			isa = PBXGroup;
+			children = (
+				B8CEBBFA1D373ACD0053DF5A /* PlayListSQL.h */,
+				B8CEBBFB1D373ACD0053DF5A /* PlayListSQL.m */,
+			);
+			path = SQL;
 			sourceTree = "<group>";
 		};
 		C03F1D0A485DCE97C2DAB2CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8CEBBF41D3738BD0053DF5A /* libsqlite3.0.tbd */,
 				793DF0D02585527B97B3639A /* libPods.a */,
 			);
 			name = Frameworks;
@@ -578,6 +600,7 @@
 				B80DB3241D339C97004CA6DB /* GDNavigationController.m in Sources */,
 				B80DB3151D33607F004CA6DB /* GDLrcAnalysis.m in Sources */,
 				B810C3DA1D35DF1700E10F07 /* HomePageCollectionView.m in Sources */,
+				B8CEBBFC1D373ACD0053DF5A /* PlayListSQL.m in Sources */,
 				B810C3D01D35DE9100E10F07 /* MusicModel.m in Sources */,
 				B8228BC51D348E8300AEFC08 /* MenuViewController.m in Sources */,
 				B810C3DB1D35DF1700E10F07 /* MusicDetailVController.m in Sources */,
@@ -586,6 +609,7 @@
 				B80DB3181D336289004CA6DB /* LrcModel.m in Sources */,
 				B8BDBBC21D35FFD10014F656 /* HomeManagerView.m in Sources */,
 				B810C3DF1D35DF5200E10F07 /* GD_DownloadCenter.m in Sources */,
+				B8CEBBF91D373A440053DF5A /* SingleManager.m in Sources */,
 				B8228BC91D34AB0E00AEFC08 /* AudioPlayDetailVC.m in Sources */,
 				B8BDBBC91D3615E20014F656 /* PlayManager.m in Sources */,
 				B810C3CD1D35DE8400E10F07 /* MDCell.m in Sources */,

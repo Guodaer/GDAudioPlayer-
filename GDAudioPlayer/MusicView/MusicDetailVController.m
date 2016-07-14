@@ -88,7 +88,6 @@
     if (cell) {
         cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     }
-
     UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [moreBtn setImage:XUIImage(@"MD_MoreHandle") forState:UIControlStateNormal];
     moreBtn.frame = CGRectMake(SCREENWIDTH - 50, (60-40)/2, 50, 40);
@@ -101,6 +100,7 @@
     cell.singer_Label.text = [NSString stringWithFormat:@"%@",model.msinger];
     return cell;
 }
+#pragma mark - 更多按钮
 - (void)cellMoreButtonSelectedRowAtIndexPath:(UIButton *)sender{
     
     DetailMusicListModel *model = _dataArray[sender.tag];
@@ -123,7 +123,7 @@
 
     [self getlistenMusicURL:[NSString stringWithFormat:@"%@",model.mid] Singer:model.msinger];
 }
-
+#pragma mark - 请求得到音乐流的地址
 - (void)getlistenMusicURL:(NSString *)mid Singer:(NSString*)singer{
 
     [[GD_DownloadCenter manager] postRequestWithURL:Get_mdlurl parameters:@{@"pver":@"1",@"Mid":mid} callBlock:^(id responseObject) {
@@ -149,6 +149,7 @@
     }
     return _tableView;
 }
+#pragma mark - 下载音乐列表的数据
 - (void)musicDetaildownloadDatas{
     
     [[GD_DownloadCenter manager] postRequestWithURL:GET_musiclist parameters:@{@"uid":@"1",@"pver":@"1",@"maid":_needModel.maid} callBlock:^(id responseObject) {

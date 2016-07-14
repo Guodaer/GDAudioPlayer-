@@ -27,4 +27,6 @@
 
 #import "PlayManager.h"
 
+#import "FMDB.h"
+
 #endif /* GDPrefixHeader_pch */
