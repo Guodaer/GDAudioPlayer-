@@ -151,7 +151,11 @@
 //    GDLog(@"update mid:%@-file:%d",mid,b);
     return b;
 }
-
+- (BOOL)delete_MusicWhereMid:(NSString*)mid {
+    NSString *sql = [NSString stringWithFormat:@"delete from playlist where mid='%@'",mid];
+    BOOL b= [_database executeUpdate:sql];
+    return b;
+}
 - (BOOL)delete_playlistdata {
     NSString *sql = @"delete from playlist";
     BOOL b = [_database executeUpdate:sql];

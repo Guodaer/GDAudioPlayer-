@@ -23,6 +23,8 @@
 
 - (void)gd_pause;
 
+- (void)tabbar_play;
+
 /**
  *  当前是否播放
  *

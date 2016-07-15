@@ -33,6 +33,7 @@
 - (BOOL)update_plMfile:(NSString*)mfile whereMid:(NSString*)mid;
 
 
+- (BOOL)delete_MusicWhereMid:(NSString*)mid;
 
 - (BOOL)delete_playlistdata;
 

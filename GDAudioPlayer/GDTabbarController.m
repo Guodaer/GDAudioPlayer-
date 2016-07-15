@@ -78,7 +78,6 @@
     
     self.music_IconSquare.image = XUIImage(@"musicIcon");
     
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(SCREENWIDTH-(40*3+40), 10, 40, 40);
     button.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
@@ -93,6 +92,11 @@
     [_bgView addSubview:self.music_message1];
     [_bgView addSubview:self.music_message2];
     
+    //初次进来显示之前保存的当前播放
+    NSDictionary *dic = UserDefault(CurrentPlay_Music);
+    if (dic) {
+        self.music_message1.text = dic[@"mname"];self.music_message2.text = dic[@"msinger"];
+    }
     //加tap
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH-180, 60)];
     view.userInteractionEnabled = YES;
@@ -163,7 +167,7 @@
 //        [self.play_control setImage:XUIImage(@"tabbar_audio_pause_highlight") forState:UIControlStateNormal];
         playButton_Play = YES;
         UD_SetValue([NSNumber numberWithInteger:HandStart], Hand_pause);
-        [[PlayManager defaultManager] gd_play];
+        [[PlayManager defaultManager] tabbar_play];
         
     }else{
 //        [self.music_IconSquare.layer removeAllAnimations];

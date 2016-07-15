@@ -22,8 +22,15 @@ static NSString *const cellIDentifier = @"celll";
     if (self) {
         _musicdataArray = [NSMutableArray array];
         [self drawContext];
+        [self refresh];
     }
     return self;
+}
+- (void)refresh{
+//    __weak typeof(self) weakSelf = self;
+    _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self requestToServerDownloadDatas];
+    }];
 }
 - (void)drawContext {
     
@@ -127,6 +134,7 @@ static NSString *const cellIDentifier = @"celll";
     [[GD_DownloadCenter manager] postRequestWithURL:GET_ma_list parameters:@{@"uid":@"1",@"pver":@"3"} callBlock:^(id responseObject) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         NSArray *array = dic[@"mal"];
+        [_musicdataArray removeAllObjects];
 //        NSLog(@"%@",array);
         for (NSDictionary *dic2 in array) {
             MusicModel *model = [[MusicModel alloc] init];
@@ -134,6 +142,7 @@ static NSString *const cellIDentifier = @"celll";
             [_musicdataArray addObject:model];
         }
         [self.collectionView reloadData];
+        [_collectionView.mj_header endRefreshing];
     } callError:^(id Error) {
         GDLog(@"请求错误");
     }];

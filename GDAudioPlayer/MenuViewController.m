@@ -48,9 +48,9 @@
     [self.topView addGestureRecognizer:tap];
     
     [self.bottomView addSubview:self.tableView];
+    [self getDataSource];
     [self bottomHeadView];
     
-    [self getDataSource];
 }
 - (void)getDataSource{
     [[PlayListSQL shareInstance] createPlaylistSQL];
@@ -97,9 +97,27 @@
     msinger.textColor = XUIColor(0xededed, 0.9);
     msinger.font = [UIFont systemFontOfSize:13];
     [cell addSubview:msinger];
+    
+    UIButton *deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    deleteBtn.frame = CGRectMake(SCREENWIDTH-(40+10), 0, 44, 44);
+    [deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+    deleteBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [deleteBtn setTitleColor:XUIColor(0xffffff, 0.7) forState:UIControlStateNormal];
+    deleteBtn.tag = indexPath.row;
+    [deleteBtn addTarget:self action:@selector(deleteOneMusicyouwant:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:deleteBtn];
 
     return cell;
     
+}
+- (void)deleteOneMusicyouwant:(UIButton *)sender {
+    
+    NSDictionary *dic = _dataArray[sender.tag];
+    NSString *mid = dic[@"mid"];
+    //删除
+    [[PlayListSQL shareInstance] createPlaylistSQL];
+    [[PlayListSQL shareInstance] delete_MusicWhereMid:mid];
+    [self getDataSource];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -118,16 +136,16 @@
     NSNumber *loopmodel = UserDefault(Menu_LoopModel);
     NSString *lbtitle;
     if (loopmodel == [NSNumber numberWithInteger:MenuLoopType_RANDOM]){
-        self.bottomHead_Label.text = [NSString stringWithFormat:@"随机播放队列(%d首)",10];
+        self.bottomHead_Label.text = [NSString stringWithFormat:@"随机播放队列(%d首)",(int)_dataArray.count];
         lbtitle = @"随机";
     }else if (loopmodel==[NSNumber numberWithInteger:MenuLoopType_SEQUENCE]){
-        self.bottomHead_Label.text = [NSString stringWithFormat:@"顺序播放队列(%d首)",10];
+        self.bottomHead_Label.text = [NSString stringWithFormat:@"顺序播放队列(%d首)",(int)_dataArray.count];
         lbtitle = @"顺序";
     }else if (loopmodel==[NSNumber numberWithInteger:MenuLoopType_SINGLE]){
         self.bottomHead_Label.text = @"单曲循环播放队列";
         lbtitle = @"单曲";
     }else if(loopmodel==[NSNumber numberWithInteger:MenuLoopType_ALL]||!loopmodel){
-        self.bottomHead_Label.text = [NSString stringWithFormat:@"循环播放队列(%d首)",10];
+        self.bottomHead_Label.text = [NSString stringWithFormat:@"循环播放队列(%d首)",(int)_dataArray.count];
         lbtitle = @"循环";
     }
     [self.bottomHead_loopButton setTitle:lbtitle forState:UIControlStateNormal];
@@ -141,7 +159,6 @@
         
         [[PlayListSQL shareInstance]createPlaylistSQL];
         [[PlayListSQL shareInstance] delete_playlistdata];
-//        [self getDataSource];
         [self dismissViewControllerAnimated:YES completion:nil];
         
     }else if (sender.tag == BHLOOPBTNTAG){
@@ -149,17 +166,18 @@
         NSInteger changeModel;NSString *title;
         if (loopmodel == [NSNumber numberWithInteger:MenuLoopType_RANDOM]){
             title = @"顺序";
+            self.bottomHead_Label.text = [NSString stringWithFormat:@"顺序播放队列(%d首)",(int)_dataArray.count];
             changeModel = MenuLoopType_SEQUENCE;
         }else if (loopmodel==[NSNumber numberWithInteger:MenuLoopType_SEQUENCE]){
             self.bottomHead_Label.text = @"单曲循环播放队列";
             title = @"单曲";
             changeModel = MenuLoopType_SINGLE;
         }else if (loopmodel==[NSNumber numberWithInteger:MenuLoopType_SINGLE]){
-            self.bottomHead_Label.text = [NSString stringWithFormat:@"循环播放队列(%d首)",10];
+            self.bottomHead_Label.text = [NSString stringWithFormat:@"循环播放队列(%d首)",(int)_dataArray.count];
             title = @"循环";
             changeModel = MenuLoopType_ALL;
         }else if(loopmodel==[NSNumber numberWithInteger:MenuLoopType_ALL]||!loopmodel){
-            self.bottomHead_Label.text = [NSString stringWithFormat:@"随机播放队列(%d首)",10];
+            self.bottomHead_Label.text = [NSString stringWithFormat:@"随机播放队列(%d首)",(int)_dataArray.count];
             title = @"随机";
             changeModel = MenuLoopType_RANDOM;
         }

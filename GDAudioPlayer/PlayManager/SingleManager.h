@@ -14,4 +14,8 @@
 
 - (NSInteger)indexofMid:(NSString*)mid where:(NSArray*)array;
 
+#pragma mark - 指示器
+- (void)loadIndicatiorView ;
+- (void)IndicatiorStartAnimation;
+- (void)IndicatiorStopAnimation;
 @end

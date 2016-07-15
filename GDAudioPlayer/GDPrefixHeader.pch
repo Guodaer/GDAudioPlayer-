@@ -33,4 +33,7 @@
 
 #import "SingleManager.h"
 
+#import "MJRefresh.h"
+
+
 #endif /* GDPrefixHeader_pch */

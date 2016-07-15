@@ -47,8 +47,11 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
 - (void)prepareToPlayMusicWithURl:(NSString *)urlString mname:(NSString *)mname Singer:(NSString*)singer Album:(NSString*)album Mid:(NSString *)mid{
     _name = mname;_singer = singer;_album = album;_mid = mid;
     [[NSNotificationCenter defaultCenter] postNotificationName:Notification_PLAY_NowMusicMessage object:self userInfo:@{@"name":mname,@"singer":singer}];
+    //当前正在播放的
+    [self currentPlayingMid:mid Singer:singer Album:album Mname:mname];
     if (isPlaying)[self gd_destroy];
     if (!self.player) {
+        [[SingleManager defaultManager] loadIndicatiorView];
         self.playerItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:urlString]];
         self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
         //监听播放完
@@ -64,10 +67,20 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
         [self.player replaceCurrentItemWithPlayerItem:self.playerItem];
         isPlaying = YES;
     }
+    [[SingleManager defaultManager] IndicatiorStartAnimation];
     [self.playerItem addObserver:self forKeyPath:Player_Status options:NSKeyValueObservingOptionNew context:nil];
 
 }
-
+#pragma mark - 当前播放的歌曲存本地
+- (void)currentPlayingMid:(NSString*)mid Singer:(NSString*)singer Album:(NSString*)album Mname:(NSString*)mname{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:mid forKey:@"mid"];
+    [dic setObject:singer forKey:@"msinger"];
+    [dic setObject:album forKey:@"malbum"];
+    [dic setObject:mname forKey:@"mname"];
+    UD_SetValue(dic, CurrentPlay_Music);
+}
+#pragma mark - 播放监听
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:Player_Status]) {
         
@@ -75,6 +88,7 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
             GDLog(@"贮备好播放");
             if ([UserDefault(Hand_pause) intValue]==1) {
                 [self gd_play];
+                [[SingleManager defaultManager] IndicatiorStopAnimation];
             }
             
             if (isbackground) {
@@ -124,7 +138,16 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     NSTimeInterval result = startSeconds + durationSeconds;// 计算缓冲总进度
     return result;
 }
-
+- (void)tabbar_play {
+    if (self.player) {
+        [self gd_play];
+    }else{
+        NSDictionary *dic = UserDefault(CurrentPlay_Music);
+        if (dic != nil) {
+            [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",dic[@"mid"]] Singer:dic[@"msinger"] Album:dic[@"malbum"]];
+        }
+    }
+}
 - (void)gd_play{
     isPlaying = YES;
     [self.player play];
@@ -204,22 +227,26 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     
     
 }
+#pragma mark - 下一首
 - (void)next{
-    
+    [self gd_destroy];
     [[PlayListSQL shareInstance] createPlaylistSQL];
     NSArray *array = [[PlayListSQL shareInstance] SQL_getPlaylist_FromDB];
     if (array.count>0) {
         currentMusicIndex = [[SingleManager defaultManager] indexofMid:[NSString stringWithFormat:@"%@",_mid] where:array];
+        GDLog(@"%@-%ld",_mid,currentMusicIndex);
         currentMusicIndex++;
         if (currentMusicIndex > array.count-1) {
             currentMusicIndex = 0;
         }
         NSDictionary *dic = array[currentMusicIndex];
-        [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",dic[@"mid"]] Singer:dic[@"msinger"] Album:_album];
+        [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",dic[@"mid"]] Singer:dic[@"msinger"] Album:dic[@"malbum"]];
     }
     
 }
+#pragma mark - 上一首
 - (void)previous{
+    [self gd_destroy];
     [[PlayListSQL shareInstance] createPlaylistSQL];
     NSArray *array = [[PlayListSQL shareInstance] SQL_getPlaylist_FromDB];
     if (array.count>0) {

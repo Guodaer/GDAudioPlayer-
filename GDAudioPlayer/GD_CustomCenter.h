@@ -134,9 +134,9 @@ typedef enum: NSInteger{
  */
 #define Menu_LoopModel @"menuloopModel" //循环模式
 
-#define CurrentPlay_Music @"Current_PlayMusic" //当前播放的
+#define CurrentPlay_Music @"Current_PlayMusic" //当前播放的 {mid,msinger,malbum,mname}
 
-#define Hand_pause @"handpause"
+#define Hand_pause @"handpause"//手动停止
 
 /**
  *  接口
