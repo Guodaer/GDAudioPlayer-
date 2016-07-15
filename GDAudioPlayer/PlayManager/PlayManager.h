@@ -30,4 +30,12 @@
  */
 - (BOOL)currentPlay;
 
+/**
+ *  下一首
+ */
+- (void)next;
+/**
+ *  上一首
+ */
+- (void)previous;
 @end

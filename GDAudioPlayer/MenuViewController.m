@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "GDPresentTransition.h"
+#import "GetMusicUrlManager.h"
 #define BHLOOPBTNTAG 1000
 #define BHCLEARBTNTAG 1001
 @interface MenuViewController ()<UIViewControllerTransitioningDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -103,6 +104,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary *dic = _dataArray[indexPath.row];
+    [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",dic[@"mid"]] Singer:dic[@"msinger"] Album:dic[@"malbum"]];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 #pragma mark - 播放队列，循环模式，清空按钮

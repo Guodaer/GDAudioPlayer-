@@ -15,7 +15,7 @@
 - (void)createPlaylistSQL;
 
 
-- (void)insert_playlistWithMid:(NSString*)mid Mname:(NSString *)mname MSinger:(NSString *)msinger MState:(NSString*)mstate Mlrc:(NSString*)mlrc MIcon:(NSString *)icon MFile:(NSString*)file;
+- (void)insert_playlistWithMid:(NSString*)mid Mname:(NSString *)mname MSinger:(NSString *)msinger MState:(NSString*)mstate Mlrc:(NSString*)mlrc MIcon:(NSString *)icon MFile:(NSString*)file Malbum:(NSString*)album;
 //查询sql----------------
 - (NSString *)getplaylsit_midWhereMid:(NSString*)mid;
 - (NSString *)getplaylsit_mnameWhereMid:(NSString*)mid;
@@ -24,6 +24,8 @@
 - (NSString *)getplaylsit_mlrcWhereMid:(NSString*)mid;
 - (NSString *)getplaylsit_miconWhereMid:(NSString*)mid;
 - (NSString *)getplaylsit_mfileWhereMid:(NSString*)mid;
+- (NSString *)getplaylsit_malbumWhereMid:(NSString*)mid;
+
 //更新state
 - (BOOL)update_plMState:(NSString*)mstate whereMid:(NSString*)mid;
 - (BOOL)update_plMlrc:(NSString*)mlrc whereMid:(NSString*)mid;

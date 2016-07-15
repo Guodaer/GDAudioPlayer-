@@ -141,9 +141,14 @@
         button.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
         [button setImage:XUIImage(@"tabbar_audio_next_normal") forState:UIControlStateNormal];
         [button setImage:XUIImage(@"tabbar_audio_next_highlight") forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(nextMusicBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         _next_control = button;
     }
     return _next_control;
+}
+- (void)nextMusicBtnClick:(UIButton*)sender {
+    UD_SetValue([NSNumber numberWithInteger:HandStart], Hand_pause);
+    [[PlayManager defaultManager] next];
 }
 /**
  *  播放按钮点击事件
@@ -153,16 +158,19 @@
 - (void)playControlClick:(UIButton *)sender {
     
     if (!playButton_Play) {
-        [self.music_IconSquare.layer addAnimation:[self iconRotate] forKey:nil];
-        [self.play_control setImage:XUIImage(@"tabbar_audio_pause_normal") forState:UIControlStateNormal];
-        [self.play_control setImage:XUIImage(@"tabbar_audio_pause_highlight") forState:UIControlStateNormal];
+//        [self.music_IconSquare.layer addAnimation:[self iconRotate] forKey:nil];
+//        [self.play_control setImage:XUIImage(@"tabbar_audio_pause_normal") forState:UIControlStateNormal];
+//        [self.play_control setImage:XUIImage(@"tabbar_audio_pause_highlight") forState:UIControlStateNormal];
         playButton_Play = YES;
+        UD_SetValue([NSNumber numberWithInteger:HandStart], Hand_pause);
         [[PlayManager defaultManager] gd_play];
+        
     }else{
-        [self.music_IconSquare.layer removeAllAnimations];
-        [self.play_control setImage:XUIImage(@"tabbar_audio_start_normal") forState:UIControlStateNormal];
-        [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateNormal];
+//        [self.music_IconSquare.layer removeAllAnimations];
+//        [self.play_control setImage:XUIImage(@"tabbar_audio_start_normal") forState:UIControlStateNormal];
+//        [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateNormal];
         playButton_Play = NO;
+        UD_SetValue([NSNumber numberWithInteger:HandPause], Hand_pause);
         [[PlayManager defaultManager] gd_pause];
     }
 }

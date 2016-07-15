@@ -16,7 +16,10 @@ typedef enum : NSUInteger {
     MenuLoopType_SEQUENCE,
     MenuLoopType_SINGLE,
 } MenuLoopType;
-
+typedef enum: NSInteger{
+    HandPause,
+    HandStart
+}HandlePause;
 /**3
  *  屏幕的大小
  */
@@ -97,8 +100,17 @@ typedef enum : NSUInteger {
 
 #define iOS_VERSION_8_OR_LATER __IPHONE_OS_VERSION_MAX_ALLOWED>=__IPHONE_8_0
 
+/**
+ *  NSUserdefault
+ *
+ *  @param key key
+ *
+ *  @return value
+ */
 #define UserDefault(key) [[NSUserDefaults standardUserDefaults] objectForKey:key]
-
+/**
+ *  Description
+ */
 #define UD_SetValue(object,key) {NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];\
 [ud setObject:object forKey:key];\
 [ud synchronize];}
@@ -122,6 +134,9 @@ typedef enum : NSUInteger {
  */
 #define Menu_LoopModel @"menuloopModel" //循环模式
 
+#define CurrentPlay_Music @"Current_PlayMusic" //当前播放的
+
+#define Hand_pause @"handpause"
 
 /**
  *  接口

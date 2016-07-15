@@ -69,17 +69,20 @@
     if (event.type == UIEventTypeRemoteControl) {
         switch (event.subtype) {
             case  UIEventSubtypeRemoteControlPlay:
+                UD_SetValue([NSNumber numberWithInteger:HandStart], Hand_pause);
                 [[PlayManager defaultManager] gd_play];
                 break;
             case UIEventSubtypeRemoteControlPause:
+                UD_SetValue([NSNumber numberWithInteger:HandPause], Hand_pause);
                 [[PlayManager defaultManager] gd_pause];
-                
                 break;
             case UIEventSubtypeRemoteControlNextTrack:
                 NSLog(@"下一首");
+                [[PlayManager defaultManager] next];
                 break;
             case UIEventSubtypeRemoteControlPreviousTrack:
                 NSLog(@"上一首 ");
+                [[PlayManager defaultManager] previous];
                 break;
             default:
                 break;

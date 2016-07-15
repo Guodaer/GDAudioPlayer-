@@ -126,6 +126,7 @@
         [self insert_SQLPL];
         isInsertPLSQL=YES;
     }
+    UD_SetValue([NSNumber numberWithInteger:HandStart], Hand_pause);
     [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",model.mid] Singer:model.msinger Album:_needModel.maname];
 }
 - (void)insert_SQLPL{
@@ -136,7 +137,7 @@
         [_dataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             //插库
             DetailMusicListModel *model = weakSelf.dataArray[idx];
-            [[PlayListSQL shareInstance] insert_playlistWithMid:model.mid Mname:model.mname MSinger:model.msinger MState:model.mstate Mlrc:@"no" MIcon:@"no" MFile:@"no"];
+            [[PlayListSQL shareInstance] insert_playlistWithMid:model.mid Mname:model.mname MSinger:model.msinger MState:model.mstate Mlrc:@"no" MIcon:@"no" MFile:@"no" Malbum:_needModel.maname];
         }];
     }
 }

@@ -35,7 +35,7 @@
  mlrc:
  micon:
  mfile:本地歌曲地址
- 
+ malbum
  */
 - (void)createPlaylistSQL {
     
@@ -44,13 +44,13 @@
         GDLog(@"playlist-openError");
         return;
     }
-    NSString *sql = @"create table if not exists playlist(mid varchar(32),mname varchar(32),msinger varchar(32),mstate varchar(32),mlrc varchar(32),micon varchar(32),mfile varchar(32))";
-    BOOL b = [_database executeUpdate:sql];
-    GDLog(@"playlist-%d",b);
+    NSString *sql = @"create table if not exists playlist(mid varchar(32),mname varchar(32),msinger varchar(32),mstate varchar(32),mlrc varchar(32),micon varchar(32),mfile varchar(32),malbum varchar(32))";
+    [_database executeUpdate:sql];
+//    GDLog(@"playlist-%d",b);
 }
-- (void)insert_playlistWithMid:(NSString*)mid Mname:(NSString *)mname MSinger:(NSString *)msinger MState:(NSString*)mstate Mlrc:(NSString *)mlrc MIcon:(NSString *)icon MFile:(NSString *)file{
-    NSString *sql = @"insert into playlist(mid,mname,msinger,mstate,mlrc,micon,mfile) values(?,?,?,?,?,?,?)";
-    [_database executeUpdate:sql,mid,mname,msinger,mstate,mlrc,icon,file];
+- (void)insert_playlistWithMid:(NSString*)mid Mname:(NSString *)mname MSinger:(NSString *)msinger MState:(NSString*)mstate Mlrc:(NSString *)mlrc MIcon:(NSString *)icon MFile:(NSString *)file Malbum:(NSString *)album{
+    NSString *sql = @"insert into playlist(mid,mname,msinger,mstate,mlrc,micon,mfile,malbum) values(?,?,?,?,?,?,?,?)";
+    [_database executeUpdate:sql,mid,mname,msinger,mstate,mlrc,icon,file,album];
 }
 //查询sql----------------
 - (NSString *)getplaylsit_midWhereMid:(NSString *)mid{
@@ -116,37 +116,46 @@
     }
     return mfile;
 }
-
+- (NSString*)getplaylsit_malbumWhereMid:(NSString *)mid{
+    NSString *sql = [NSString stringWithFormat:@"select * from playlist where mid='%@'",mid];
+    FMResultSet *result = [_database executeQuery:sql];
+    NSString *malbum= nil;
+    while ([result next]) {
+        malbum = [result stringForColumnIndex:7];
+    }
+    return malbum;
+    
+}
 //更新state
 - (BOOL)update_plMState:(NSString*)mstate whereMid:(NSString*)mid{
     NSString *sql = [NSString stringWithFormat:@"update playlist set mstate='%@' where mid='%@'",mstate,mid];
     BOOL b = [_database executeUpdate:sql];
-    GDLog(@"update mid:%@-state:%d",mid,b);
+//    GDLog(@"update mid:%@-state:%d",mid,b);
     return b;
 }
 - (BOOL)update_plMlrc:(NSString *)mlrc whereMid:(NSString *)mid{
     NSString *sql = [NSString stringWithFormat:@"update playlist set mlrc='%@' where mid='%@'",mlrc,mid];
     BOOL b = [_database executeUpdate:sql];
-    GDLog(@"update mid:%@-lrc:%d",mid,b);
+//    GDLog(@"update mid:%@-lrc:%d",mid,b);
     return b;
 }
 - (BOOL)update_plMicon:(NSString *)micon whereMid:(NSString *)mid{
     NSString *sql = [NSString stringWithFormat:@"update playlist set micon='%@' where mid='%@'",micon,mid];
     BOOL b = [_database executeUpdate:sql];
-    GDLog(@"update mid:%@-icon:%d",mid,b);
+//    GDLog(@"update mid:%@-icon:%d",mid,b);
     return b;
 }
 - (BOOL)update_plMfile:(NSString *)mfile whereMid:(NSString *)mid{
     NSString *sql = [NSString stringWithFormat:@"update playlist set mfile='%@' where mid='%@'",mfile,mid];
     BOOL b = [_database executeUpdate:sql];
-    GDLog(@"update mid:%@-file:%d",mid,b);
+//    GDLog(@"update mid:%@-file:%d",mid,b);
     return b;
 }
 
 - (BOOL)delete_playlistdata {
     NSString *sql = @"delete from playlist";
     BOOL b = [_database executeUpdate:sql];
-    GDLog(@"delete - %d",b);
+//    GDLog(@"delete - %d",b);
     return b;
 }
 - (NSArray *)SQL_getPlaylist_FromDB{
@@ -162,7 +171,7 @@
         [dic setObject:[resultSet stringForColumnIndex:4] forKey:@"mlrc"];
         [dic setObject:[resultSet stringForColumnIndex:5] forKey:@"micon"];
         [dic setObject:[resultSet stringForColumnIndex:6] forKey:@"mfile"];
-
+        [dic setObject:[resultSet stringForColumnIndex:7] forKey:@"malbum"];
         [array addObject:dic];
     }
     return array;

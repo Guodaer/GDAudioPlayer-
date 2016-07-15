@@ -25,6 +25,7 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     NSString *_album;
     NSString *_mid;
     NSInteger currentMusicIndex;//当前播放的歌的位置
+    BOOL isbackground;
 }
 @property (nonatomic, strong) AVPlayer *player;
 
@@ -50,8 +51,13 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     if (!self.player) {
         self.playerItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:urlString]];
         self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
+        //监听播放完
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioPlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+        //进入后台
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backgroundNotification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        //应用进入前台
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+        
         isPlaying = YES;
     }else{
         self.playerItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:urlString]];
@@ -67,8 +73,13 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
         
         if (self.playerItem.status == AVPlayerItemStatusReadyToPlay) {   //准备好播放
             GDLog(@"贮备好播放");
+            if ([UserDefault(Hand_pause) intValue]==1) {
+                [self gd_play];
+            }
             
-            [self gd_play];
+            if (isbackground) {
+                [self backgrounddisplay:_name Singer:_singer AVlayer:self.player.currentItem];
+            }
 
         }else if(self.playerItem.status == AVPlayerItemStatusFailed){    //加载失败
             GDLog(@"失败");
@@ -134,10 +145,15 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
 - (BOOL)currentPlay{
     return isPlaying;
 }
+#pragma mark  - 进入后台
 - (void)backgroundNotification:(NSNotification *)noti{
-    if (isPlaying) {
+    if (!isbackground) {
         [self backgrounddisplay:_name Singer:_singer AVlayer:self.player.currentItem];
     }
+    isbackground = YES;
+}
+- (void)appEnterForeground:(NSNotification*)noti{
+    isbackground = NO;
 }
 #pragma mark - 锁屏显示
 - (void)backgrounddisplay:(NSString *)name Singer:(NSString*)singer AVlayer:(AVPlayerItem*)player{
@@ -151,7 +167,7 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     //设置歌手
     info[MPMediaItemPropertyArtist] = singer;
     //设置专辑图片
-    UIImage *image = [UIImage imageNamed:@"side_bg"];
+    UIImage *image = [UIImage imageNamed:@"lockImg"];
     MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:image];
     info[MPMediaItemPropertyArtwork] = artwork;
     //设置歌曲时间
@@ -190,10 +206,30 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
 }
 - (void)next{
     
-    
+    [[PlayListSQL shareInstance] createPlaylistSQL];
+    NSArray *array = [[PlayListSQL shareInstance] SQL_getPlaylist_FromDB];
+    if (array.count>0) {
+        currentMusicIndex = [[SingleManager defaultManager] indexofMid:[NSString stringWithFormat:@"%@",_mid] where:array];
+        currentMusicIndex++;
+        if (currentMusicIndex > array.count-1) {
+            currentMusicIndex = 0;
+        }
+        NSDictionary *dic = array[currentMusicIndex];
+        [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",dic[@"mid"]] Singer:dic[@"msinger"] Album:_album];
+    }
     
 }
-- (void)Previous{
-    
+- (void)previous{
+    [[PlayListSQL shareInstance] createPlaylistSQL];
+    NSArray *array = [[PlayListSQL shareInstance] SQL_getPlaylist_FromDB];
+    if (array.count>0) {
+        currentMusicIndex = [[SingleManager defaultManager] indexofMid:[NSString stringWithFormat:@"%@",_mid] where:array];
+        currentMusicIndex--;
+        if (currentMusicIndex < 0) {
+            currentMusicIndex = array.count-1;
+        }
+        NSDictionary *dic = array[currentMusicIndex];
+        [[GetMusicUrlManager shareInstance] getlistenMusicURL:[NSString stringWithFormat:@"%@",dic[@"mid"]] Singer:dic[@"msinger"] Album:_album];
+    }
 }
 @end
