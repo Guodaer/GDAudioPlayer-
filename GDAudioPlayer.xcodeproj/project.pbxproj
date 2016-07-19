@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E8215D9A9510CED8F869E24 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793DF0D02585527B97B3639A /* libPods.a */; };
+		B806EB961D3C71D800CE1B57 /* AudioPlayDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = B806EB951D3C71D800CE1B57 /* AudioPlayDetailView.m */; };
 		B80DB2CE1D33330D004CA6DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB2CD1D33330D004CA6DB /* main.m */; };
 		B80DB2D11D33330D004CA6DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B80DB2D01D33330D004CA6DB /* AppDelegate.m */; };
 		B80DB2D91D33330D004CA6DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B80DB2D81D33330D004CA6DB /* Assets.xcassets */; };
@@ -33,10 +34,10 @@
 		B810C3DF1D35DF5200E10F07 /* GD_DownloadCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B810C3DE1D35DF5200E10F07 /* GD_DownloadCenter.m */; };
 		B8228BC11D348E2400AEFC08 /* GDPresentTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = B8228BC01D348E2400AEFC08 /* GDPresentTransition.m */; };
 		B8228BC51D348E8300AEFC08 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8228BC41D348E8300AEFC08 /* MenuViewController.m */; };
-		B8228BC91D34AB0E00AEFC08 /* AudioPlayDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B8228BC81D34AB0E00AEFC08 /* AudioPlayDetailVC.m */; };
 		B8BDBBC21D35FFD10014F656 /* HomeManagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BDBBC11D35FFD10014F656 /* HomeManagerView.m */; };
 		B8BDBBC51D3602560014F656 /* DownloadVController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BDBBC41D3602560014F656 /* DownloadVController.m */; };
 		B8BDBBC91D3615E20014F656 /* PlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8BDBBC81D3615E20014F656 /* PlayManager.m */; };
+		B8C7A2641D3DC697002AD877 /* GDSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C7A2631D3DC697002AD877 /* GDSlider.m */; };
 		B8CEBBF51D3738BD0053DF5A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8CEBBF41D3738BD0053DF5A /* libsqlite3.0.tbd */; };
 		B8CEBBF91D373A440053DF5A /* SingleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CEBBF81D373A440053DF5A /* SingleManager.m */; };
 		B8CEBBFC1D373ACD0053DF5A /* PlayListSQL.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CEBBFB1D373ACD0053DF5A /* PlayListSQL.m */; };
@@ -62,6 +63,8 @@
 
 /* Begin PBXFileReference section */
 		793DF0D02585527B97B3639A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B806EB941D3C71D800CE1B57 /* AudioPlayDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayDetailView.h; sourceTree = "<group>"; };
+		B806EB951D3C71D800CE1B57 /* AudioPlayDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayDetailView.m; sourceTree = "<group>"; };
 		B80DB2C91D33330D004CA6DB /* GDAudioPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GDAudioPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80DB2CD1D33330D004CA6DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B80DB2CF1D33330D004CA6DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -112,14 +115,14 @@
 		B8228BC21D348E3100AEFC08 /* GDPresentTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDPresentTransition.h; sourceTree = "<group>"; };
 		B8228BC31D348E8300AEFC08 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		B8228BC41D348E8300AEFC08 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		B8228BC71D34AB0E00AEFC08 /* AudioPlayDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayDetailVC.h; sourceTree = "<group>"; };
-		B8228BC81D34AB0E00AEFC08 /* AudioPlayDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayDetailVC.m; sourceTree = "<group>"; };
 		B8BDBBC01D35FFD10014F656 /* HomeManagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeManagerView.h; sourceTree = "<group>"; };
 		B8BDBBC11D35FFD10014F656 /* HomeManagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeManagerView.m; sourceTree = "<group>"; };
 		B8BDBBC31D3602560014F656 /* DownloadVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadVController.h; sourceTree = "<group>"; };
 		B8BDBBC41D3602560014F656 /* DownloadVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadVController.m; sourceTree = "<group>"; };
 		B8BDBBC71D3615E20014F656 /* PlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayManager.h; sourceTree = "<group>"; };
 		B8BDBBC81D3615E20014F656 /* PlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayManager.m; sourceTree = "<group>"; };
+		B8C7A2621D3DC697002AD877 /* GDSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDSlider.h; sourceTree = "<group>"; };
+		B8C7A2631D3DC697002AD877 /* GDSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDSlider.m; sourceTree = "<group>"; };
 		B8CEBBF41D3738BD0053DF5A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		B8CEBBF71D373A440053DF5A /* SingleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleManager.h; sourceTree = "<group>"; };
 		B8CEBBF81D373A440053DF5A /* SingleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleManager.m; sourceTree = "<group>"; };
@@ -303,6 +306,7 @@
 		B810C3CA1D35DE6C00E10F07 /* MyLib */ = {
 			isa = PBXGroup;
 			children = (
+				B8C7A2611D3DC685002AD877 /* 滑块Slider */,
 				B8CEBBF61D3739F90053DF5A /* SQL */,
 				B810C3D21D35DF0500E10F07 /* 拉伸 */,
 				B810C3DC1D35DF5200E10F07 /* Download */,
@@ -362,8 +366,8 @@
 		B8228BC61D34AAC000AEFC08 /* PlayDetailVC */ = {
 			isa = PBXGroup;
 			children = (
-				B8228BC71D34AB0E00AEFC08 /* AudioPlayDetailVC.h */,
-				B8228BC81D34AB0E00AEFC08 /* AudioPlayDetailVC.m */,
+				B806EB941D3C71D800CE1B57 /* AudioPlayDetailView.h */,
+				B806EB951D3C71D800CE1B57 /* AudioPlayDetailView.m */,
 			);
 			path = PlayDetailVC;
 			sourceTree = "<group>";
@@ -392,6 +396,15 @@
 				B8CEBBF81D373A440053DF5A /* SingleManager.m */,
 			);
 			path = PlayManager;
+			sourceTree = "<group>";
+		};
+		B8C7A2611D3DC685002AD877 /* 滑块Slider */ = {
+			isa = PBXGroup;
+			children = (
+				B8C7A2621D3DC697002AD877 /* GDSlider.h */,
+				B8C7A2631D3DC697002AD877 /* GDSlider.m */,
+			);
+			path = "滑块Slider";
 			sourceTree = "<group>";
 		};
 		B8CEBBF61D3739F90053DF5A /* SQL */ = {
@@ -601,6 +614,8 @@
 				B8228BC11D348E2400AEFC08 /* GDPresentTransition.m in Sources */,
 				B80DB3071D334125004CA6DB /* UIImage+Circle.m in Sources */,
 				B80DB3211D337CC6004CA6DB /* LrcTimeContentModel.m in Sources */,
+				B806EB961D3C71D800CE1B57 /* AudioPlayDetailView.m in Sources */,
+				B8C7A2641D3DC697002AD877 /* GDSlider.m in Sources */,
 				B80DB31E1D3375AE004CA6DB /* LrcManger.m in Sources */,
 				B80DB3241D339C97004CA6DB /* GDNavigationController.m in Sources */,
 				B8CEBBFF1D376AD90053DF5A /* GetMusicUrlManager.m in Sources */,
@@ -616,7 +631,6 @@
 				B8BDBBC21D35FFD10014F656 /* HomeManagerView.m in Sources */,
 				B810C3DF1D35DF5200E10F07 /* GD_DownloadCenter.m in Sources */,
 				B8CEBBF91D373A440053DF5A /* SingleManager.m in Sources */,
-				B8228BC91D34AB0E00AEFC08 /* AudioPlayDetailVC.m in Sources */,
 				B8BDBBC91D3615E20014F656 /* PlayManager.m in Sources */,
 				B810C3CD1D35DE8400E10F07 /* MDCell.m in Sources */,
 				B80DB3011D33334F004CA6DB /* RootViewController.m in Sources */,

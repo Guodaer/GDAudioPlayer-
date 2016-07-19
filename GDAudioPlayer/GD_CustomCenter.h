@@ -143,7 +143,7 @@ typedef enum: NSInteger{
  *
  *  @return
  */
-#define Home_Server_HttpAddress @"http://123.57.25.103/XCloudWeb/"//外网测试
+#define Home_Server_HttpAddress @"http://123.57.25.103/XUIWeb/"//外网测试
 
 #define GET_ma_list [NSString stringWithFormat:@"%@%@",Home_Server_HttpAddress,@"getmalist"]
 

@@ -9,15 +9,16 @@
 #import "RootViewController.h"
 #import "GDLrcAnalysis.h"
 #import "MenuViewController.h"
-#import "AudioPlayDetailVC.h"
 #import "HomePageCollectionView.h"
 #import "MusicDetailVController.h"
 #import "HomeManagerView.h"
 #import "DownloadVController.h"
 #import "PlayListSQL.h"
-@interface RootViewController ()<HomePageCollectionViewDelegate,HomeMangerViewDelegate,UIScrollViewDelegate>
+#import "AudioPlayDetailView.h"
+@interface RootViewController ()<HomePageCollectionViewDelegate,HomeMangerViewDelegate,UIScrollViewDelegate,AudioPlayDetailDelegate>
 {
     NSMutableArray *arr;
+    AudioPlayDetailView *_audioView;
 }
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *navbgView;
@@ -35,8 +36,11 @@
     bgimageView.image = XUIImage(@"side_bg1");
     [self.view addSubview:bgimageView];
     [self drawnavigation];
-    //    NSString *path = [[NSBundle mainBundle] pathForResource:@"10405520" ofType:@"lrc"];
-    //    [[GDLrcAnalysis defaultManager] analysisLrc:path];//解析歌词的类
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"10405520" ofType:@"lrc"];
+//    LrcManger *manager = [[GDLrcAnalysis defaultManager] analysisLrc:path];//解析歌词的类
+//    GDLog(@"%@",manager.lrc_tcArray);
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentMenuViewController:) name:Notification_Menu_Present object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentAudioPlayDetailViewController:) name:Notification_AudioPlayDetail_Present object:nil];
     
@@ -129,9 +133,72 @@
     }
     
 }
+#pragma mark - 音乐歌词展示界面Delegate
+- (void)audioViewdismiss:(UIButton *)button{
+    [UIView animateWithDuration:0.3 animations:^{
+        _audioView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT);
+    } completion:^(BOOL finished) {
+        [_audioView removeFromSuperview];
+        _audioView = nil;
+    }];
+}
+- (void)audioViewBtnclick:(UIButton *)button{
+
+}
+#pragma mark - 手势的滑动效果
+- (void)handlePans:(UIPanGestureRecognizer *)recognizer{
+    [recognizer.view.superview bringSubviewToFront:recognizer.view];
+    CGPoint center = recognizer.view.center;
+    CGPoint translation = [recognizer translationInView:self.view];//返回在横纵坐标上拖动了多少像素
+    recognizer.view.center = CGPointMake(center.x+translation.x, center.y);
+    [recognizer setTranslation:CGPointZero inView:self.view];
+    CGPoint newCenter = recognizer.view.center;
+    CGFloat newX = newCenter.x;
+    CGFloat wid = self.view.frame.size.width/2;
+    
+    if (recognizer.state == UIGestureRecognizerStateChanged) {
+        recognizer.view.center = CGPointMake(center.x + translation.x, _audioView.frame.size.height/2+fabs(wid-newX)/wid*50);
+        CGFloat angle = M_PI_4/2.5*(wid-newX)/wid;
+        //判断x位置变化
+        CGAffineTransform transform = CGAffineTransformMakeRotation(-angle);
+        _audioView.transform = transform;
+    }
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        if (fabs(wid-newX) > 200) {
+            [UIView animateWithDuration:0.3 animations:^{
+                if (newX < wid) {
+                    recognizer.view.center = CGPointMake(newCenter.x-wid*2, newCenter.y);
+                }else{
+                    recognizer.view.center = CGPointMake(newCenter.x+wid*2, newCenter.y);
+                }
+            } completion:^(BOOL finished) {
+                [_audioView removeFromSuperview];_audioView = nil;
+            }];
+        }else{
+            [UIView animateWithDuration:0.3 animations:^{
+                
+                CGAffineTransform transform = CGAffineTransformMakeRotation(0);
+                
+                _audioView.transform = transform;
+                
+                _audioView.center = CGPointMake(SCREENWIDTH/2, SCREENHEIGHT/2);
+                
+            } completion:^(BOOL finished) {
+                
+            }];
+        }
+    }
+}
+#pragma mark - tabbar Notification
 - (void)presentAudioPlayDetailViewController:(NSNotification *)notifi {
-    AudioPlayDetailVC *apd = [[AudioPlayDetailVC alloc] init];
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:apd animated:YES completion:nil];
+    _audioView = [[AudioPlayDetailView alloc] initWithFrame:CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT)];
+    _audioView.gd_delegate = self;
+    [[UIApplication sharedApplication].keyWindow addSubview:_audioView];
+    [UIView animateWithDuration:0.3 animations:^{
+        _audioView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+    } completion:^(BOOL finished) {
+        [_audioView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePans:)]];
+    }];
 }
 - (void)presentMenuViewController:(NSNotification*)notifi {
     MenuViewController *menu = [[MenuViewController alloc] init];

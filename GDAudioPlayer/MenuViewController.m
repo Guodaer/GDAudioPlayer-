@@ -100,9 +100,9 @@
     
     UIButton *deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     deleteBtn.frame = CGRectMake(SCREENWIDTH-(40+10), 0, 44, 44);
-    [deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
-    deleteBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    [deleteBtn setTitleColor:XUIColor(0xffffff, 0.7) forState:UIControlStateNormal];
+    [deleteBtn setImage:XUIImage(@"Menu_delete_up") forState:UIControlStateNormal];
+    [deleteBtn setImage:XUIImage(@"Menu_delete_down") forState:UIControlStateHighlighted];
+    [deleteBtn setImageEdgeInsets:UIEdgeInsetsMake(9, 9, 9, 9)];
     deleteBtn.tag = indexPath.row;
     [deleteBtn addTarget:self action:@selector(deleteOneMusicyouwant:) forControlEvents:UIControlEventTouchUpInside];
     [cell addSubview:deleteBtn];

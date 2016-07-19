@@ -62,14 +62,14 @@
 - (void)playMusic:(NSNotification *)noti{
     [self.music_IconSquare.layer addAnimation:[self iconRotate] forKey:nil];
     [self.play_control setImage:XUIImage(@"tabbar_audio_pause_normal") forState:UIControlStateNormal];
-    [self.play_control setImage:XUIImage(@"tabbar_audio_pause_highlight") forState:UIControlStateNormal];
+    [self.play_control setImage:XUIImage(@"tabbar_audio_pause_highlight") forState:UIControlStateHighlighted];
     playButton_Play = YES;
 
 }
 - (void)pauseMusic:(NSNotification *)noti{
     [self.music_IconSquare.layer removeAllAnimations];
     [self.play_control setImage:XUIImage(@"tabbar_audio_start_normal") forState:UIControlStateNormal];
-    [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateNormal];
+    [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateHighlighted];
     playButton_Play = NO;
 
 }
@@ -85,7 +85,7 @@
     [_bgView addSubview:button];
     _play_control = button;
     [self.play_control setImage:XUIImage(@"tabbar_audio_start_normal") forState:UIControlStateNormal];
-    [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateNormal];
+    [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateHighlighted];
 
     [_bgView addSubview:self.listMenu_control];
     [_bgView addSubview:self.next_control];
@@ -120,7 +120,7 @@
         button.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
         [button addTarget:self action:@selector(presentListMenu:) forControlEvents:UIControlEventTouchUpInside];
         [button setImage:XUIImage(@"list_menu_normal") forState:UIControlStateNormal];
-        [button setImage:XUIImage(@"list_menu_highlight") forState:UIControlStateNormal];
+        [button setImage:XUIImage(@"list_menu_highlight") forState:UIControlStateHighlighted];
         _listMenu_control = button;
     }
     return _listMenu_control;
@@ -144,7 +144,7 @@
         button.frame = CGRectMake(SCREENWIDTH-(40*2+27), 10, 40, 40);
         button.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5);
         [button setImage:XUIImage(@"tabbar_audio_next_normal") forState:UIControlStateNormal];
-        [button setImage:XUIImage(@"tabbar_audio_next_highlight") forState:UIControlStateNormal];
+        [button setImage:XUIImage(@"tabbar_audio_next_highlight") forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(nextMusicBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         _next_control = button;
     }
