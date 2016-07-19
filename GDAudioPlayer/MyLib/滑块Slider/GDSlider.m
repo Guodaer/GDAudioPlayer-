@@ -26,7 +26,8 @@
 }
 - (void)createGDSlider{
 //    [self setMinimumTrackImage:XUIImage(@"APD_audio_slider_track") forState:UIControlStateNormal];
-//    [self setMaximumTrackImage:XUIImage(@"APD_audio_slider_track") forState:UIControlStateNormal];
+    [self setMaximumTrackImage:XUIImage(@"APD_audio_slider_track_bg") forState:UIControlStateNormal];
+    [self setMinimumTrackTintColor:[UIColor yellowColor]];
     [self setThumbImage:XUIImage(@"APD_audio_slider_thumb") forState:UIControlStateNormal];
     [self setThumbImage:XUIImage(@"APD_audio_slider_thumb") forState:UIControlStateHighlighted];
 }

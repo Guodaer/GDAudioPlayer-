@@ -40,4 +40,16 @@
  *  上一首
  */
 - (void)previous;
+
+/**
+ *  滑动调整歌曲进度
+ *
+ *  @param value 进度
+ */
+- (void)seekToTheTimeValue:(float)value;
+/**
+ *  滑动结束
+ */
+- (void)pansSliderValueFinfished;
+
 @end

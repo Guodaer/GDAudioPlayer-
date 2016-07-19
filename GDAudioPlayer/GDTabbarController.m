@@ -162,17 +162,11 @@
 - (void)playControlClick:(UIButton *)sender {
     
     if (!playButton_Play) {
-//        [self.music_IconSquare.layer addAnimation:[self iconRotate] forKey:nil];
-//        [self.play_control setImage:XUIImage(@"tabbar_audio_pause_normal") forState:UIControlStateNormal];
-//        [self.play_control setImage:XUIImage(@"tabbar_audio_pause_highlight") forState:UIControlStateNormal];
         playButton_Play = YES;
         UD_SetValue([NSNumber numberWithInteger:HandStart], Hand_pause);
         [[PlayManager defaultManager] tabbar_play];
         
     }else{
-//        [self.music_IconSquare.layer removeAllAnimations];
-//        [self.play_control setImage:XUIImage(@"tabbar_audio_start_normal") forState:UIControlStateNormal];
-//        [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateNormal];
         playButton_Play = NO;
         UD_SetValue([NSNumber numberWithInteger:HandPause], Hand_pause);
         [[PlayManager defaultManager] gd_pause];

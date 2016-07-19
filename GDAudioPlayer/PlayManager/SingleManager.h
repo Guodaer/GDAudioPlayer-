@@ -8,7 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#define SingleSetTotalTime(time) [[SingleManager defaultManager]setSingle_totalTime:time]
+#define SingleSetCurrentTime(time) [[SingleManager defaultManager]setSingle_currentTime:time]
+#define SingleGetTotalTime [SingleManager defaultManager].single_totalTime
+#define SingleGetCurrentTime [SingleManager defaultManager].single_currentTime
+
 @interface SingleManager : NSObject
+
+@property (nonatomic, assign) float single_totalTime;
+
+@property (nonatomic, assign) float single_currentTime;
+
 
 + (instancetype)defaultManager;
 

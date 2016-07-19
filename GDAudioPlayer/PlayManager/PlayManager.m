@@ -26,11 +26,16 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     NSString *_mid;
     NSInteger currentMusicIndex;//当前播放的歌的位置
     BOOL isbackground;
+    BOOL _isFisrtConfig;                                        //判断是否为第一次布局
+
 }
 @property (nonatomic, strong) AVPlayer *player;
 
 @property (nonatomic, strong) AVPlayerItem *playerItem;
 
+@property (nonatomic, strong) id timerObserver;                 //用来监控播放时间的observer
+
+@property (nonatomic, assign) BOOL sliderValueChanging;
 @end
 
 @implementation PlayManager
@@ -67,9 +72,14 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
         [self.player replaceCurrentItemWithPlayerItem:self.playerItem];
         isPlaying = YES;
     }
+    _isFisrtConfig = YES;
     [[SingleManager defaultManager] IndicatiorStartAnimation];
     [self.playerItem addObserver:self forKeyPath:Player_Status options:NSKeyValueObservingOptionNew context:nil];
-
+    [self.playerItem addObserver:self forKeyPath:Player_LoadedTimeRanges options:NSKeyValueObservingOptionNew context:nil];
+    [self.playerItem addObserver:self forKeyPath:Player_PlaybackLikelyToKeepUp options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [self.playerItem addObserver:self forKeyPath:Player_PlaybackBufferEmpty options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [self.playerItem addObserver:self forKeyPath:Player_PlaybackBufferFull options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    [self.playerItem addObserver:self forKeyPath:Player_PresentationSize options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
 }
 #pragma mark - 当前播放的歌曲存本地
 - (void)currentPlayingMid:(NSString*)mid Singer:(NSString*)singer Album:(NSString*)album Mname:(NSString*)mname{
@@ -94,7 +104,13 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
             if (isbackground) {
                 [self backgrounddisplay:_name Singer:_singer AVlayer:self.player.currentItem];
             }
-
+            if (_isFisrtConfig) {
+                _isFisrtConfig = NO;
+                CMTime duration = self.playerItem.duration;
+                CGFloat totalDuration = CMTimeGetSeconds(duration);
+                SingleSetTotalTime(totalDuration);
+                [self readyToObserverSlider];
+            }
         }else if(self.playerItem.status == AVPlayerItemStatusFailed){    //加载失败
             GDLog(@"失败");
             [self gd_pause];
@@ -105,9 +121,13 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
         
     }else if([keyPath isEqualToString:Player_LoadedTimeRanges]){         //当缓冲进度有变化的时候
         
-        if (!isPlaying) {
+        if (isPlaying) {
             [self gd_play];
         }
+        NSTimeInterval timeInterval = [self availableDuration];
+        CMTime duration = self.playerItem.duration;
+        CGFloat totalDuration = CMTimeGetSeconds(duration);
+        [[NSNotificationCenter defaultCenter] postNotificationName:Notification_Audio_Progress object:self userInfo:@{@"progress":[NSNumber numberWithFloat:timeInterval/totalDuration]}];
         
     }else if ([keyPath isEqualToString:Player_PlaybackLikelyToKeepUp]){         //当视频播放因为各种状态播放停止的时候, 这个属性会发生变化
     }else if([keyPath isEqualToString:Player_PlaybackBufferEmpty]){             //当没有任何缓冲部分可以播放的时候
@@ -120,6 +140,40 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
 //               CGSize size = _playerItem.presentationSize;;
     }
     
+}
+/**
+ *  监控播放进度
+ */
+- (void)readyToObserverSlider {
+
+    CMTime duration = self.playerItem.duration;
+    CGFloat totalDuration = CMTimeGetSeconds(duration);
+    __weak typeof(self) weakSelf = self;
+    self.timerObserver = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:nil usingBlock:^(CMTime time) {
+        long long currentSecond = weakSelf.playerItem.currentTime.value/weakSelf.playerItem.currentTime.timescale;
+
+        //        weakSelf.playerView.timeLabel.text = [NSString stringWithFormat:@"%@/%@",calculateTimeWithTimeFormatter(currentSecond),calculateTimeWithTimeFormatter(totalDuration)];
+        [[NSNotificationCenter defaultCenter] postNotificationName:Notification_Audio_Time object:nil userInfo:@{@"currsecond":calculateTimeWithTimeFormatter(currentSecond),@"totalTime":calculateTimeWithTimeFormatter(totalDuration)}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:Notification_Audio_SliderValue object:nil userInfo:@{@"value":[NSNumber numberWithFloat:currentSecond/totalDuration]}];
+        SingleSetCurrentTime(currentSecond);
+    }];
+    
+}
+
+#pragma mark - 调整播放位置
+- (void)seekToTheTimeValue:(float)value{
+    _sliderValueChanging = YES;
+    [self gd_pause];
+    float totalDuration = CMTimeGetSeconds(self.playerItem.duration);
+    float current = totalDuration*value;
+    CMTime changedTime = CMTimeMakeWithSeconds(current, totalDuration);
+    [self.player seekToTime:changedTime completionHandler:^(BOOL finished){
+    }];
+}
+
+- (void)pansSliderValueFinfished{
+    [self gd_play];
+    _sliderValueChanging = NO;
 }
 #pragma mark - 当前item播放完成
 - (void)audioPlayDidEnd:(NSNotification *)noti{
@@ -161,10 +215,24 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
 - (void)gd_destroy{
     if (self.playerItem) {
         [self gd_pause];
-        [self.playerItem removeObserver:self forKeyPath:Player_Status context:nil];
+        [self deallocPlayer];
         self.playerItem = nil;
     }
 }
+- (void)deallocPlayer {
+    [self.playerItem removeObserver:self forKeyPath:Player_Status context:nil];
+    [self.playerItem removeObserver:self forKeyPath:Player_LoadedTimeRanges context:nil];
+    [self.playerItem removeObserver:self forKeyPath:Player_PlaybackLikelyToKeepUp context:nil];
+    [self.playerItem removeObserver:self forKeyPath:Player_PlaybackBufferEmpty context:nil];
+    [self.playerItem removeObserver:self forKeyPath:Player_PlaybackBufferFull context:nil];
+    [self.playerItem removeObserver:self forKeyPath:Player_PresentationSize context:nil];
+    if (_timerObserver) {
+        [self.player removeTimeObserver:self.timerObserver];
+        _timerObserver = nil;
+    }
+
+}
+#pragma mark - 当前是否正在播放
 - (BOOL)currentPlay{
     return isPlaying;
 }

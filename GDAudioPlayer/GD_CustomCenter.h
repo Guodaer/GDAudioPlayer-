@@ -127,8 +127,15 @@ typedef enum: NSInteger{
 #define Notification_PLAY_Start @"Notification_PLAY_Start"
 
 #define Notification_PLAY_Pause @"Notification_PLAY_Pause"
-
+//当前播放的
 #define Notification_PLAY_NowMusicMessage @"Notification_PLAY_NowMusicMessage"
+//缓冲进度条变化
+#define Notification_Audio_Progress @"Notification_Audio_Progress"
+//实时改变播放进度
+#define Notification_Audio_SliderValue @"Notification_Audio_SliderValue"
+//切换的歌曲的总时长和 当前播放的时间
+#define Notification_Audio_Time @"Notification_Audio_Time"
+
 /**
  *  数据存储
  */
@@ -138,6 +145,7 @@ typedef enum: NSInteger{
 
 #define Hand_pause @"handpause"//手动停止
 
+#define CurrentMusic_Time @"CurrentMusic_Time"
 /**
  *  接口
  *

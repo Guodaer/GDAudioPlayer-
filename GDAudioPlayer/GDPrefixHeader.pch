@@ -35,5 +35,6 @@
 
 #import "MJRefresh.h"
 
+#import "GDAVPlayerTimeTool.h"
 
 #endif /* GDPrefixHeader_pch */
