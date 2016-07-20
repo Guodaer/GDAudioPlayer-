@@ -43,6 +43,7 @@
 		B8CEBBF91D373A440053DF5A /* SingleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CEBBF81D373A440053DF5A /* SingleManager.m */; };
 		B8CEBBFC1D373ACD0053DF5A /* PlayListSQL.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CEBBFB1D373ACD0053DF5A /* PlayListSQL.m */; };
 		B8CEBBFF1D376AD90053DF5A /* GetMusicUrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CEBBFE1D376AD90053DF5A /* GetMusicUrlManager.m */; };
+		B8EA087D1D3F472600FDB60A /* 10736444.lrc in Resources */ = {isa = PBXBuildFile; fileRef = B8EA087C1D3F472600FDB60A /* 10736444.lrc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +134,7 @@
 		B8CEBBFB1D373ACD0053DF5A /* PlayListSQL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayListSQL.m; sourceTree = "<group>"; };
 		B8CEBBFD1D376AD90053DF5A /* GetMusicUrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMusicUrlManager.h; sourceTree = "<group>"; };
 		B8CEBBFE1D376AD90053DF5A /* GetMusicUrlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMusicUrlManager.m; sourceTree = "<group>"; };
+		B8EA087C1D3F472600FDB60A /* 10736444.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 10736444.lrc; sourceTree = "<group>"; };
 		C6C1D1BCFF9BE11DA6F05103 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CD94F803F987B1524FFD70B2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -256,6 +258,7 @@
 		B80DB30B1D334A82004CA6DB /* source */ = {
 			isa = PBXGroup;
 			children = (
+				B8EA087C1D3F472600FDB60A /* 10736444.lrc */,
 				B80DB3101D334F8C004CA6DB /* 10405520.lrc */,
 				B80DB30C1D334A9A004CA6DB /* 那些花儿.mp3 */,
 				B80DB30D1D334A9A004CA6DB /* pushu.jpg */,
@@ -540,6 +543,7 @@
 				B80DB30F1D334A9A004CA6DB /* pushu.jpg in Resources */,
 				B80DB30E1D334A9A004CA6DB /* 那些花儿.mp3 in Resources */,
 				B80DB3111D334F8C004CA6DB /* 10405520.lrc in Resources */,
+				B8EA087D1D3F472600FDB60A /* 10736444.lrc in Resources */,
 				B80DB2D91D33330D004CA6DB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

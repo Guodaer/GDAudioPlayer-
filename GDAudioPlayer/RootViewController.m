@@ -36,7 +36,7 @@
     bgimageView.image = XUIImage(@"side_bg1");
     [self.view addSubview:bgimageView];
     [self drawnavigation];
-//        NSString *path = [[NSBundle mainBundle] pathForResource:@"10405520" ofType:@"lrc"];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"10405520" ofType:@"lrc"];
 //    LrcManger *manager = [[GDLrcAnalysis defaultManager] analysisLrc:path];//解析歌词的类
 //    GDLog(@"%@",manager.lrc_tcArray);
     
@@ -138,12 +138,10 @@
     [UIView animateWithDuration:0.3 animations:^{
         _audioView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT);
     } completion:^(BOOL finished) {
+        [_audioView invalidateLrc];
         [_audioView removeFromSuperview];
         _audioView = nil;
     }];
-}
-- (void)audioViewBtnclick:(UIButton *)button{
-
 }
 #pragma mark - 手势的滑动效果
 - (void)handlePans:(UIPanGestureRecognizer *)recognizer{

@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) NSMutableArray *tcArray;
 
-@property (nonatomic, strong) LrcModel *lrcModel;
+@property (nonatomic, strong) LrcModel *lrcModel; //ar,ti,al,by
 
 @property (nonatomic, strong) LrcManger *lrcManager;
 
@@ -60,9 +60,9 @@
         }
         //判断头信息
         if ([content hasPrefix:@"[ti"]||[content hasPrefix:@"[ar"]||[content hasPrefix:@"[al"]||[content hasPrefix:@"[by"]) {
-            [self paserLrcHead:content];
+            [self paserLrcHead:content];//头信息
         }else if([content hasPrefix:@"["]){
-            [self paserLrcMessage:content];
+            [self paserLrcMessage:content];//time，歌词
         }
     }
 }
@@ -78,8 +78,9 @@
             lrc_tcModel.lrcEach = lrc;
         }
     }
+//    GDLog(@"%f,%@",lrc_tcModel.seconds,lrc_tcModel.lrcEach);
     [_tcArray addObject:lrc_tcModel];
-
+//    GDLog(@"\n");
 }
 #pragma mark - 时间解析
 - (float)secondsForTime:(NSString *)time{
@@ -89,7 +90,6 @@
     //取出秒
     float seconds = [timeArray[2] floatValue];
     return minute * 60 + seconds;
-    
 }
 #pragma mark - 头信息
 - (void)paserLrcHead:(NSString *)lrcHead{

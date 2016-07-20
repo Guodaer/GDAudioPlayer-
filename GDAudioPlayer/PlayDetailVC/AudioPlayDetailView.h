@@ -17,12 +17,14 @@
 
 @optional
 - (void)audioViewdismiss:(UIButton *)button;
-- (void)audioViewBtnclick:(UIButton *)button;
 
 @end
 
 @interface AudioPlayDetailView : UIView
 
 @property (nonatomic, assign) id<AudioPlayDetailDelegate>gd_delegate;
+
+//退出播放器
+- (void)invalidateLrc;
 
 @end

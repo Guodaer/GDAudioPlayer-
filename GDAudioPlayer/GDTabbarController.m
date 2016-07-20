@@ -60,14 +60,14 @@
     _music_message2.text = dic[@"singer"];
 }
 - (void)playMusic:(NSNotification *)noti{
-    [self.music_IconSquare.layer addAnimation:[self iconRotate] forKey:nil];
+//    [self.music_IconSquare.layer addAnimation:[self iconRotate] forKey:nil];
     [self.play_control setImage:XUIImage(@"tabbar_audio_pause_normal") forState:UIControlStateNormal];
     [self.play_control setImage:XUIImage(@"tabbar_audio_pause_highlight") forState:UIControlStateHighlighted];
     playButton_Play = YES;
 
 }
 - (void)pauseMusic:(NSNotification *)noti{
-    [self.music_IconSquare.layer removeAllAnimations];
+//    [self.music_IconSquare.layer removeAllAnimations];
     [self.play_control setImage:XUIImage(@"tabbar_audio_start_normal") forState:UIControlStateNormal];
     [self.play_control setImage:XUIImage(@"tabbar_audio_start_highlight") forState:UIControlStateHighlighted];
     playButton_Play = NO;
@@ -213,11 +213,11 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.music_IconSquare.layer removeAllAnimations];
+//    [self.music_IconSquare.layer removeAllAnimations];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.music_IconSquare.layer addAnimation:[self iconRotate] forKey:nil];
+//    [self.music_IconSquare.layer addAnimation:[self iconRotate] forKey:nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -121,15 +121,16 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
         
     }else if([keyPath isEqualToString:Player_LoadedTimeRanges]){         //当缓冲进度有变化的时候
         
-        if (isPlaying) {
-            [self gd_play];
-        }
+//        if (!isPlaying) {
+//            [self gd_play];
+//        }
         NSTimeInterval timeInterval = [self availableDuration];
         CMTime duration = self.playerItem.duration;
         CGFloat totalDuration = CMTimeGetSeconds(duration);
         [[NSNotificationCenter defaultCenter] postNotificationName:Notification_Audio_Progress object:self userInfo:@{@"progress":[NSNumber numberWithFloat:timeInterval/totalDuration]}];
         
-    }else if ([keyPath isEqualToString:Player_PlaybackLikelyToKeepUp]){         //当视频播放因为各种状态播放停止的时候, 这个属性会发生变化
+    }else if ([keyPath isEqualToString:Player_PlaybackLikelyToKeepUp]){         //当播放因为各种状态播放停止的时候, 这个属性会发生变化
+        
     }else if([keyPath isEqualToString:Player_PlaybackBufferEmpty]){             //当没有任何缓冲部分可以播放的时候
 
     }else if ([keyPath isEqualToString:Player_PlaybackBufferFull]){
@@ -151,9 +152,8 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     __weak typeof(self) weakSelf = self;
     self.timerObserver = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:nil usingBlock:^(CMTime time) {
         long long currentSecond = weakSelf.playerItem.currentTime.value/weakSelf.playerItem.currentTime.timescale;
-
-        //        weakSelf.playerView.timeLabel.text = [NSString stringWithFormat:@"%@/%@",calculateTimeWithTimeFormatter(currentSecond),calculateTimeWithTimeFormatter(totalDuration)];
-        [[NSNotificationCenter defaultCenter] postNotificationName:Notification_Audio_Time object:nil userInfo:@{@"currsecond":calculateTimeWithTimeFormatter(currentSecond),@"totalTime":calculateTimeWithTimeFormatter(totalDuration)}];
+//calculateTimeWithTimeFormatter
+        [[NSNotificationCenter defaultCenter] postNotificationName:Notification_Audio_Time object:nil userInfo:@{@"currsecond":[NSNumber numberWithFloat:currentSecond],@"totalTime":[NSNumber numberWithFloat:totalDuration]}];
         [[NSNotificationCenter defaultCenter] postNotificationName:Notification_Audio_SliderValue object:nil userInfo:@{@"value":[NSNumber numberWithFloat:currentSecond/totalDuration]}];
         SingleSetCurrentTime(currentSecond);
     }];
@@ -167,10 +167,12 @@ NSString * const Player_PresentationSize = @"presentationSize";             //�
     float totalDuration = CMTimeGetSeconds(self.playerItem.duration);
     float current = totalDuration*value;
     CMTime changedTime = CMTimeMakeWithSeconds(current, totalDuration);
-    [self.player seekToTime:changedTime completionHandler:^(BOOL finished){
-    }];
+    //nan 为not a number 的缩写，计算机中出现的错误情况，在这要判断，不然seekTotime方法会崩溃
+    if (!isnan(current)&&!isnan(totalDuration)) {
+        [self.player seekToTime:changedTime completionHandler:^(BOOL finished){
+        }];
+    }
 }
-
 - (void)pansSliderValueFinfished{
     [self gd_play];
     _sliderValueChanging = NO;
