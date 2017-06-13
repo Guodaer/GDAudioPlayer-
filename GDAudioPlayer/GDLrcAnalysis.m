@@ -78,7 +78,7 @@
             lrc_tcModel.lrcEach = lrc;
         }
     }
-//    GDLog(@"%f,%@",lrc_tcModel.seconds,lrc_tcModel.lrcEach);
+//    GDLog(@"%f,%@",lrc_tcModel.secon、ds,lrc_tcModel.lrcEach);
     [_tcArray addObject:lrc_tcModel];
 //    GDLog(@"\n");
 }

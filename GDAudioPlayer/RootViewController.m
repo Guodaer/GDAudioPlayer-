@@ -200,7 +200,8 @@
 }
 - (void)presentMenuViewController:(NSNotification*)notifi {
     MenuViewController *menu = [[MenuViewController alloc] init];
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:menu animated:YES completion:nil];
+//    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:menu animated:YES completion:nil];
+    [self presentViewController:menu animated:YES completion:nil];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

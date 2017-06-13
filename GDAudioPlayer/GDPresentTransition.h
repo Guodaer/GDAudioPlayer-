@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, GDPresentOneTransitionType) {
     GDPresentOneTransitionTypeDismiss//管理dismiss动画
 };
 
-@interface GDPresentTransition : NSObject<UIViewControllerAnimatedTransitioning>
+@interface GDPresentTransition : NSObject<UIViewControllerAnimatedTransitioning,CAAnimationDelegate>
 + (instancetype)shareInstance;
 //根据定义的枚举初始化的两个方法
 //+ (instancetype)transitionWithTransitionType:(GDPresentOneTransitionType)type;

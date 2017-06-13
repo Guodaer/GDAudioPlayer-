@@ -11,7 +11,7 @@
 #import "GetMusicUrlManager.h"
 #define BHLOOPBTNTAG 1000
 #define BHCLEARBTNTAG 1001
-@interface MenuViewController ()<UIViewControllerTransitioningDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface MenuViewController ()<UIViewControllerTransitioningDelegate,UITableViewDelegate,UITableViewDataSource,CAAnimationDelegate>
 
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIView *bottomView;
@@ -40,7 +40,7 @@
     [super viewDidLoad];
     _dataArray = [NSMutableArray array];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.bottomView];
     [self.view addSubview:self.topView];
@@ -256,7 +256,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [UIView animateWithDuration:0.15 animations:^{
-        self.topView.backgroundColor = XUIColor(0x000000, 0.1);
+//        self.topView.backgroundColor = XUIColor(0x000000, 0.3);
     }];
 }
 - (void)viewWillDisappear:(BOOL)animated{
@@ -269,10 +269,10 @@
     //这里我们初始化presentType
     return [[GDPresentTransition shareInstance] initWithTransitionType:GDPresentOneTransitionTypePresent];
 }
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    //这里我们初始化dismissType
-    return [[GDPresentTransition shareInstance] initWithTransitionType:GDPresentOneTransitionTypeDismiss];
-}
+//- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+//    //这里我们初始化dismissType
+//    return [[GDPresentTransition shareInstance] initWithTransitionType:GDPresentOneTransitionTypeDismiss];
+//}
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }

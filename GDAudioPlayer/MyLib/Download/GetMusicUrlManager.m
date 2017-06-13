@@ -35,22 +35,5 @@
     }];
     
 }
-#if 0
 
-#pragma mark - 请求得到音乐流的地址
-- (void)getlistenMusicURL:(NSString *)mid Singer:(NSString*)singer{
-    
-    [[GD_DownloadCenter manager] postRequestWithURL:Get_mdlurl parameters:@{@"pver":@"1",@"Mid":mid} callBlock:^(id responseObject) {
-        
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        GetMusicFileUrlModel *model = [[GetMusicFileUrlModel alloc] init];
-        [model setValuesForKeysWithDictionary:dic];
-        
-        [[PlayManager defaultManager] prepareToPlayMusicWithURl:model.mfile mname:model.mname Singer:singer Album:_needModel.maname];
-    } callError:^(id Error) {
-        GDLog(@"Error");
-    }];
-    
-}
-#endif
 @end

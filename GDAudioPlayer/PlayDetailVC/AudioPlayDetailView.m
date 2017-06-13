@@ -367,6 +367,10 @@
     for (id view in cell.subviews) {
         [view removeFromSuperview];
     }
+    UIView *bgview = [[UIView alloc] initWithFrame:cell.frame];
+    cell.selectedBackgroundView = bgview;
+    bgview.backgroundColor = [UIColor clearColor];
+    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH-60, 40)];
     [cell addSubview:label];
     label.textAlignment = NSTextAlignmentCenter;

@@ -27,9 +27,9 @@ static NSString *const cellIDentifier = @"celll";
     return self;
 }
 - (void)refresh{
-//    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self requestToServerDownloadDatas];
+        [weakSelf requestToServerDownloadDatas];
     }];
 }
 - (void)drawContext {
@@ -131,6 +131,41 @@ static NSString *const cellIDentifier = @"celll";
     return YES;
 }
 - (void)requestToServerDownloadDatas{
+    
+    
+#if 0
+    NSString *str = @"http://page.amap.com/ws/page/upload/?ent=2&in=wDJRQXjFuTZWCVWigioX4ftIA6cZRmqNSVKTsrYWzn9MonJITvfTuBvL9%2B4DwH46TENJlBkcvn58KFcoOvtMOwJ%2FzS27fD8VkajARp%2Fah%2BcwdFFIbq1fgt3ceHMLQi0cpVcedGg%2FyZJ%2BzGciHOAXuxe3t8uxkfDxp3JzVcKrZsb%2FBJy9tLrt8ePjw%2F%2B0NUvzF8sMRWjxrxc3%2BVYtZKi%2FD7NKfV8sQmfNO5A1dZpsRUXM7Cq4%2FuaSbpdyIs8SsFh8d%2BSZSIBYWBpTru2a20uOnefM8mjwqWNcGZfCDgRGH0Jb%2BDj30eDYYSryaaawS77bPZhb6avbCdgyT6tYFIbKudzLO%2FQpQoxsBPA65vnvnTPrg%2FdxGQwWIs%2BsmuR3Ld4yBPUlEQGNpQDeHEaw72XYEkll9cTdWzuimFfmiawZ%2Fx2uCv%2Bu54Gc%2FnId23OaZ6vt1zqonTqPKkkV1kF7qhr3%2F2fvH4c5HmAPv0im1XpNu6xZEDUq1aT1crMrJZSdayEercnvL1Obi70h%2FKbwEELzs3rF%2BPAzIurUokTqctYB%2FW8ATzH9yMQkPDMStKEUwHRaQukKJyCZi1apNbx6S9jMayvhSEamoYh2vNNZzHX4OLCWaeMCq7AJ7zlXpky0p33d%2Fd7p8RRPxkT2%2FiyuC27tZzO6zhmr7Ca%2B2pnuClJRba4%2FuACISKhKl0mZs%2FkxbT8X1M6d7cVw3NxADaXH70%2F48p%2Fv4mIKQJQIemfD5pk0Z6m4ugGhdUWXtTQfW88ibVTpsBuQ%2BqLmGWlVDf19aO1ACbxu2MUOrg9hKzEAZGeSjD15k1PaoRSJqp93V9llazrcLE%2FkLQ8httPl2EPf5JtNJZ%2B2hH92TfvdrJMV3uHtRWcJ7z42KdFFvQ%3D%3D";
+    /*
+     2016-10-27 10:52:36.152 GDAudioPlayer[1093:236731] -{
+     code = 5;
+     message = "file empty";
+     result = 0;
+     timestamp = 1477536756056;
+     version = "1.0";
+     }
+     */
+    
+    NSString *str1 = @"http://page.amap.com/ws/page/upload/?ent=2&in=Izt%2Fv1KtiVOH0%2BF0raU4nm%2B1%2BxXzJxZVn8qdkvXKqUTdMLZLpwrHWRbU1v8LR68Onp8v05SG0DqjGOCSi%2FgjCWQ2U4nUmQSQJtBBlM8pxQkO%2B%2BO2faDIO%2FhsMFGb06EvKHDERhekFNimMTHvoNh3MSBPEbhzGyuD7AnmpTPAoL9gv%2Bg5VnGj9fMtc8dfiBPNrjxegCDoITgV%2FpNhhoxnNDi4RmkRBNyrnZgTr8tly9WebEfCdcx46g1%2FRq52QGtUvJ0fhD%2BKrcbHPR9NWsfI0ZRaJAH7AMDuW13qsgCAsL%2BnXlmTsG4hANkMMU8e%2FyBlEPsuMkhHpTXaO3Ij%2BECoYEtt4fA29tvb35%2BdM2hUuaUiudYvlsRi2AkZcdFS36FLW6pziHGPCDwYaEMx7TH%2FIQtszeF0SVG9k5ePlFb2u8PkASMF8%2FDCc4C1OeA5EAUCjS6rkPII726oMv6XsW9FwyktJq1ZGHRhUVYRddLqLar46zp78QnYhK9zBqOP92kF4xTBcQ6wJkpqwMBd2SFjO5jbIRuL%2Fl7Vxb6bgOabG8hso7kZNs%2Biz1RmfWjB5xshLnXrjQbcpNGSHVm8sG21QRvlZuIBv9AwzuuvAOGc2LuWCoG1eBL5xiubsySzsdz37r8uuAhFkzFlXvaQuBeVh998DrOXdTP20M3x2BCBi0bcI6u%2FHjZD8rbFmAYInZfYB%2FzzgAdWPrcFsbLNaZkMb2GbytUjsmm019xzZpFAWK69Rl3U3MTKNU9y0x1TsbEl6BmAcdoLXxpYaRijC%2BannGYXtbEWLlif8DSnTG4eMhf2zl91SpA2XF6cLH4Ary7a6fK%2Fr85wlpd46Icb";
+    
+    [[GD_DownloadCenter manager] postRequestWithURL:str1 parameters:@{} callBlock:^(id responseObject) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"-%@",dic);
+//        NSArray *array = dic[@"mal"];
+//        [_musicdataArray removeAllObjects];
+//        //        NSLog(@"%@",array);
+//        for (NSDictionary *dic2 in array) {
+//            MusicModel *model = [[MusicModel alloc] init];
+//            [model setValuesForKeysWithDictionary:dic2];
+//            [_musicdataArray addObject:model];
+//        }
+//        [self.collectionView reloadData];
+//        [_collectionView.mj_header endRefreshing];
+    } callError:^(id Error) {
+        GDLog(@"请求错误");
+    }];
+#endif
+    
+#if 1
     [[GD_DownloadCenter manager] postRequestWithURL:GET_ma_list parameters:@{@"uid":@"1",@"pver":@"3"} callBlock:^(id responseObject) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
         NSArray *array = dic[@"mal"];
@@ -146,6 +181,7 @@ static NSString *const cellIDentifier = @"celll";
     } callError:^(id Error) {
         GDLog(@"请求错误");
     }];
+#endif
 }
 
 @end
